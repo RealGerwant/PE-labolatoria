@@ -1,0 +1,163 @@
+%% Wzóra sprawozdania w LateXu
+
+\documentclass[polish,polish,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[cp1250]{inputenc}
+\usepackage{babel}
+\usepackage{pslatex}
+\usepackage{pgfplots}
+\usepackage{circuitikz} 
+%\usetikzlibrary{circuits.ee.IEC}
+\usepackage{anysize}
+\marginsize{2.5cm}{2.5cm}{3cm}{3cm}
+
+\newcommand{\PRzFieldDsc}[1]{\sffamily\bfseries\scriptsize #1}
+\newcommand{\PRzFieldCnt}[1]{\textit{#1}}
+\newcommand{\PRzHeading}[8]{
+%% #1 - nazwa laboratorium
+%% #2 - kierunek 
+%% #3 - specjalnoœæ 
+%% #4 - rok studiów 
+%% #5 - symbol grupy lab.
+%% #6 - temat 
+%% #7 - numer lab.
+%% #8 - sk³ad grupy æwiczeniowej
+
+\begin{center}
+\begin{tabular}{ p{0.32\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.12\textwidth} p{0.12\textwidth} }
+
+  &   &   &   &   \\
+\hline
+\multicolumn{5}{|c|}{}\\[-1ex]
+\multicolumn{5}{|c|}{{\LARGE #1}}\\
+\multicolumn{5}{|c|}{}\\[-1ex]
+
+\hline
+\multicolumn{1}{|l|}{\PRzFieldDsc{Kierunek}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Specjalnoœæ}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Rok studiów}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Symbol grupy lab.}} \\
+\multicolumn{1}{|c|}{\PRzFieldCnt{#2}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#3}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#4}}		& \multicolumn{2}{|c|}{\PRzFieldCnt{#5}} \\
+
+\hline
+\multicolumn{4}{|l|}{\PRzFieldDsc{Temat Laboratorium}}		& \multicolumn{1}{|l|}{\PRzFieldDsc{Numer lab.}} \\
+\multicolumn{4}{|c|}{\PRzFieldCnt{#6}}				& \multicolumn{1}{|c|}{\PRzFieldCnt{#7}} \\
+
+\hline
+\multicolumn{5}{|l|}{\PRzFieldDsc{Sk³ad grupy æwiczeniowej oraz numery indeksów}}\\
+\multicolumn{5}{|c|}{\PRzFieldCnt{#8}}\\
+
+\hline
+\multicolumn{3}{|l|}{\PRzFieldDsc{Uwagi}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Ocena}} \\
+\multicolumn{3}{|c|}{\PRzFieldCnt{\ }}		& \multicolumn{2}{|c|}{\PRzFieldCnt{\ }} \\
+
+\hline
+\end{tabular}
+\end{center}
+}
+
+\begin{document}
+
+\PRzHeading{Laboratorium Elektrotechniki}{Automatyka i Robotyka}{--}{I}{A1}{Twierdzenie Thevenina}{2}{Przemys³aw Kowalski(11223), Piotr Wiœniewski(11224), Weronika Nowak(12345)}{}
+
+\section{Cel}
+Celem laboratorium jest zbadanie w³aœciwoœci obwodu rezonansowego szeregowego przedstawionego na rysunku \ref{fig:rlc} dla sygna³u wejœciowego napiêciowego o ró¿nych wartoœciach czêstotliwoœci wejœciowej. Badania przeprowadzono dla wartoœci elementów wyznaczonych przez prowadz¹cego zajêcia. Wartoœci elementów dla badanego obwodu: R=1k$\Omega$, L=66mH, C=10nF.
+
+\begin{figure}[!h]
+\centering
+\begin{circuitikz}[scale=2,european,american]
+
+\draw (0,-1) to [sV,l=$V_{in}$] (0,1) --
+	  (0,1) to [C,l=C] (1,1) --   
+      (1,1) to [L,l=L] (2,1) --
+      (2,1) to [european resistor,l=R] (2,-1) --
+      (2,-1) to (0,-1);
+      
+\end{circuitikz}
+\caption{Badany obwód RLC}
+\label{fig:rlc}
+\end{figure}
+
+\section{Pomiary}
+Dla obwodu z rysunku \ref{fig:rlc} dokonano seriê pomiarów napiêcia na elementach R, L, C dla czêstotliwoœci wejœciowej z zakresu <0;12kHz>. Pomiary wykonane podczas badañ zapisano w poni¿szej tabeli \ref{my-label}.
+\begin{table}[!h]
+\centering
+\begin{tabular}{llll}
+\hline
+Czêstotliwoœæ(kHz) & $V_c$(mV) & $V_l$(mV) & $V_r$(mV) \\ \hline
+0.8                & 727    & 9      & 29     \\
+2.0                & 770    & 57     & 77     \\
+...                & ...    & ...    & ...    \\ \hline
+\end{tabular}
+\caption{Wartoœci pomiarów na elementach obwodu dla ró¿nych czêstotliwoœci}
+\label{my-label}
+\end{table}
+
+Zale¿noœci z tabeli \ref{my-label} przedstawiono jako charakterystykê napiêciowo-czêstotliwoœciow¹ na rysunku \ref{fig:wyk}.
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+\begin{axis}[
+xlabel={Czêstotliwoœæ [kHz]},
+ylabel={Napiêcie [mV]},
+xmin=0,xmax=15,
+ymin=0,ymax=2000,
+legend pos=north west,
+ymajorgrids=true,grid style=dashed
+]
+
+\addplot[color=red,mark=*]
+coordinates {
+(0.8,727)
+(2.0,770)
+(3.2,823)
+(3.8,926)
+(4.5,985)
+(5.0,1134)
+(5.8,1233)
+(6.0,1348)
+(6.2,1405)
+(6.4,1466)
+(6.6,1513)
+};
+
+\addplot[color=blue,mark=square]
+coordinates {
+(0.8,9)
+(2.0,57)
+(3.8,117)
+(4.5,238)
+(5.0,311)
+(5.8,490)
+(6.0,621)
+(6.2,785)
+(6.4,876)
+(6.6,984)
+};
+
+\addplot[color=green,mark=triangle]
+coordinates {
+(0.8,29)
+(2.0,77)
+(3.8,114)
+(4.5,169)
+(5.0,209)
+(5.8,271)
+(6.0,329)
+(6.2,371)
+(6.4,403)
+(6.6,427)
+};
+
+\legend{C,L,R}
+\end{axis}
+\end{tikzpicture}
+\caption{Zale¿noœæ napiêæ na elementach obwodu wzglêdem czêstotliwoœci}
+\label{fig:wyk}
+\end{figure}
+
+\section{Wnioski}
+Zak³adaj¹c poprawnoœæ przeprowadzonych badañ jesteœmy w stanie stwierdziæ, ¿e dla czêstotliwoœci równej... wg znanej nam wiedzy \cite{bolkowski1986teoria} zachodzi zjawisko rezonansu szeregowego, które pokrywa siê z wartoœci¹ obliczon¹ na podstawie wzorów algebraicznych \cite{bolkowski1986teoria}. Wszelkie rozbie¿noœci mog¹ wynikaæ z...
+\bibliographystyle{IEEEtran}
+
+\bibliography{IEEEabrv,refs}
+
+\end{document}
+
