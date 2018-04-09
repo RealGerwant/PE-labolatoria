@@ -88,7 +88,7 @@
 	to [european resistor, a=$R_{4}$, l =$1k\Omega$] (6,0)
 	to[short,*-*] (3,0)
 	to (0,0)
-	(3,0) to [european resistor, l=$R_{2}$, a = $2.2k\Omega$] (3,3)
+	(3,0) to [european resistor, l=$R_{2}$, a = $1000\Omega$] (3,3)
 	(6,0) to [european resistor, l=$R_{3}$, a = $2.2k\Omega$] (6,3);
 	\end{circuitikz}
 	\end{equation*}
@@ -122,6 +122,13 @@
 	\end{gather*}
 	\subsubsection{Przy pomocy obliczeń analitycznych}
 	Obliczenie $U_{ht}$ przy wyeliminowanym oporniku $ R_{1} $.
+	\begin{gather*}
+	U_{th}= \dfrac{V_{1}}{R_{4}+R_{5}+R_{23}} \cdot R_{23}\\
+	R_{23} = \dfrac{R_{2} \cdot R_{3}}{R_{2} + R_{3}}\\
+	R_{23} = \dfrac{2200\Omega \cdot 1000\Omega}{2200\Omega + 1000\Omega} = 687.5\Omega\\
+	U_{th} = \dfrac{5V}{1000\Omega + 220\Omega + 689.5\Omega } \cot 687.5\Omega\\
+	U_{th} = 1.802V
+	\end{gather*}
 	Obliczenie $R_{ht}$ przy wyeliminowanym oporniku $ R_{1} $.
 	\begin{gather*}
 		R_{23} = \dfrac{1}{\dfrac{1}{R_{2}} + \dfrac{1}{R_{3}}}\\
@@ -131,7 +138,7 @@
 	\end{gather*}
 	Wyznaczenie prądu $I_{1}$, z wartości otrzymanych podczas obliczeń, przy pomocy wzoru: $I_{x}= \dfrac{U_{thx}}{R_{thx} + R_{x}}$.
 	\begin{gather*}
-	I_{1}=\dfrac{xxxxxx}{439,712\Omega + 220\Omega } = xxxxxx
+	I_{1}=\dfrac{1.802V}{439,712\Omega + 220\Omega } = 2.732mA
 	\end{gather*}
 	\subsection{$I_{2}$}
 		\subsubsection{Korzystając z twierdzenia Thevenina}
@@ -150,10 +157,17 @@
 		\end{figure}
 		Wyznaczenie prądu $I_{2}$, z wartości otrzymanych podczas pomiarów, przy pomocy wzoru: $I_{x}= \dfrac{U_{thx}}{R_{thx} + R_{x}}$.
 		\begin{gather*}
-		I_{2}=\dfrac{0.749V}{168.841\Omega + 2200\Omega } = 0.641mA
+		I_{2}=\dfrac{0.749V}{171,831\Omega + 1000\Omega } = 0.641mA
 		\end{gather*}
 	\subsubsection{Przy pomocy obliczeń analitycznych}
-	Obliczenie $U_{ht}$ przy wyeliminowanym oporniku $ R_{2} $.\\
+	Obliczenie $U_{ht}$ przy wyeliminowanym oporniku $ R_{2} $.
+		\begin{gather*}
+	U_{th}= \dfrac{V_{1}}{R_{4}+R_{5}+R_{13}} \cdot R_{13}\\
+	R_{13} = \dfrac{R_{1} \cdot R_{3}}{R_{1} + R_{3}}\\
+	R_{13} = \dfrac{220\Omega \cdot 2200\Omega}{2420\Omega} = 200\Omega\\
+	U_{th} = \dfrac{5V}{1000\Omega + 220\Omega + 200\Omega } \cot 200\Omega\\
+	U_{th} = 0.704V
+	\end{gather*}
 	Obliczenie $R_{ht}$ przy wyeliminowanym oporniku $ R_{2} $.
 	\begin{gather*}
 	R_{13} = \dfrac{1}{\dfrac{1}{R_{1}} + \dfrac{1}{R_{3}}}\\
@@ -163,7 +177,7 @@
 	\end{gather*}
 		Wyznaczenie prądu $I_{2}$, z wartości otrzymanych podczas obliczeń, przy pomocy wzoru: $I_{x}= \dfrac{U_{thx}}{R_{thx} + R_{x}}$.
 	\begin{gather*}
-	I_{2}=\dfrac{xxxxxx}{171,831\Omega + 2200\Omega } = xxxxxx
+	I_{2}=\dfrac{0.704V}{168.841 + 1000\Omega } = 0.602mA
 	\end{gather*}
 	\subsection{$I_{3}$}
 		\subsubsection{Korzystając z twierdzenia Thevenina}
@@ -185,7 +199,14 @@
 		I_{3}=\dfrac{0.658V}{154.512\Omega + 2200\Omega } = 0.279mA
 		\end{gather*}
 	\subsubsection{Przy pomocy obliczeń analitycznych}
-	Obliczenie $U_{ht}$ przy wyeliminowanym oporniku $ R_{3} $.\\
+	Obliczenie $U_{ht}$ przy wyeliminowanym oporniku $ R_{3} $.
+			\begin{gather*}
+	U_{th}= \dfrac{V_{1}}{R_{4}+R_{5}+R_{12}} \cdot R_{12}\\
+	R_{12} = \dfrac{R_{1} \cdot R_{2}}{R_{1} + R_{2}}\\
+	R_{12} = \dfrac{220000\Omega}{1220\Omega} = 180.33\Omega\\
+	U_{th} = \dfrac{5V}{1000\Omega + 220\Omega + 180.33\Omega } \cot 180.33\Omega\\
+	U_{th} = 0.644V
+	\end{gather*}
 		Obliczenie $R_{ht}$ przy wyeliminowanym oporniku $ R_{3} $.
 	\begin{gather*}
 	R_{21} = \dfrac{1}{\dfrac{1}{R_{2}} + \dfrac{1}{R_{1}}}\\
@@ -195,7 +216,7 @@
 	\end{gather*}
 		Wyznaczenie prądu $I_{3}$, z wartości otrzymanych podczas obliczeń, przy pomocy wzoru: $I_{x}= \dfrac{U_{thx}}{R_{thx} + R_{x}}$.
 	\begin{gather*}
-	I_{3}=\dfrac{xxxxxx}{157,106\Omega + 220\Omega } = xxxxxx
+	I_{3}=\dfrac{0.644V}{154,512\Omega + 2200\Omega } = 0.273mA
 	\end{gather*}
 	\section{Zestawienie wszystkich wyników obliczeń i pomiarów}
 		\begin{figure}[H]
@@ -206,11 +227,11 @@
 				\cline{2-7}
 				\multicolumn{1}{c|}{}&R_{1}&R_{2}&R_{3}&R_{1}&R_{2}&R_{3}\\
 				\hline
-				U_{th}&1.824V&0.749V&0.658V&&&\\
+				U_{th}&1.824V&0.749V&0.658V&1.802V&0.704V&0.644V\\
 				\hline
 				R_{th}&434.202\Omega&168.841\Omega&154.512\Omega&439,712\Omega&171,831\Omega&157,106\Omega\\
 				\hline
-				I&2.788mA&0.641mA&0.279mA&&&\\
+				I&2.788mA&0.641mA&0.279mA&2.732mA&0.602mA&0.273mA\\
 				\hline
 				
 			\end{array}
