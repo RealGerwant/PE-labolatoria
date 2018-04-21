@@ -1,0 +1,401 @@
+\documentclass[polish,polish,a4paper]{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pslatex}
+\usepackage{pgfplots}
+\usepackage{circuitikz} 
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usetikzlibrary{circuits.ee.IEC}
+\usepackage{anysize}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\marginsize{2.5cm}{2.5cm}{2cm}{2cm}
+
+\newcommand{\PRzFieldDsc}[1]{\sffamily\bfseries\scriptsize #1}
+\newcommand{\PRzFieldCnt}[1]{\textit{#1}}
+\newcommand{\PRzHeading}[8]{
+	%% #1 - nazwa laboratorium
+	%% #2 - kierunek 
+	%% #3 - specjalność 
+	%% #4 - rok studiów 
+	%% #5 - symbol grupy lab.
+	%% #6 - temat 
+	%% #7 - numer lab.
+	%% #8 - skład grupy ćwiczeniowej
+	
+	\begin{center}
+		\begin{tabular}{ p{0.32\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.12\textwidth} p{0.12\textwidth} }
+			
+			&   &   &   &   \\
+			\hline
+			\multicolumn{5}{|c|}{}\\[-1ex]
+			\multicolumn{5}{|c|}{{\LARGE #1}}\\
+			\multicolumn{5}{|c|}{}\\[-1ex]
+			
+			\hline
+			\multicolumn{1}{|l|}{\PRzFieldDsc{Kierunek}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Specjalność}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Rok studiów}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Symbol grupy lab.}} \\
+			\multicolumn{1}{|c|}{\PRzFieldCnt{#2}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#3}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#4}}		& \multicolumn{2}{|c|}{\PRzFieldCnt{#5}} \\
+			
+			\hline
+			\multicolumn{4}{|l|}{\PRzFieldDsc{Temat Laboratorium}}		& \multicolumn{1}{|l|}{\PRzFieldDsc{Numer lab.}} \\
+			\multicolumn{4}{|c|}{\PRzFieldCnt{#6}}				& \multicolumn{1}{|c|}{\PRzFieldCnt{#7}} \\
+			
+			\hline
+			\multicolumn{5}{|l|}{\PRzFieldDsc{Skład grupy ćwiczeniowej oraz numery indeksów}}\\
+			\multicolumn{5}{|c|}{\PRzFieldCnt{#8}}\\
+			
+			\hline
+			\multicolumn{3}{|l|}{\PRzFieldDsc{Uwagi}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Ocena}} \\
+			\multicolumn{3}{|c|}{\PRzFieldCnt{\ }}		& \multicolumn{2}{|c|}{\PRzFieldCnt{\ }} \\
+			
+			\hline
+		\end{tabular}
+	\end{center}
+}
+
+
+
+\begin{document}
+
+
+	\PRzHeading{Laboratorium Podstaw Elektroniki}{Informatyka}{--}{I}{I3}{Elementy RLC}{3}{Piotr Więtczak(132339), Robert Ciemny(136693), Kamil Basiukajc(136681)}
+	\section{Krzywa ładowania pojemności}
+	\subsection{Cel zadania}
+	Celem tego zadania jest empiryczne wyznaczenie krzywej ładowania pojemności, przy pomocy pomiaru czasu i woltomierza.
+	\subsection{Przebieg Ćwiczenia}
+	Do przeprowadzenia ćwiczenia użyto rezystorów $1M\Omega$ (rzeczywista wartość $0.986M\Omega$), $1k\Omega$ (rzeczywista wartość $0.972k\Omega$), oraz kondensatora $35V$ $47 \mu F$ (rzeczywista wartość $45.450 \mu F$).
+	
+	Rozpoznano konfiguracje przełącznika, a następnie przy pomocy prototypowej płytki stykowej zbudowano obwód zaprezentowany poniżej i przeprowadzono pomiary napięć co 10 sekund.
+	
+	
+	%% Obwód 
+	\begin{figure}[H]
+		\begin{equation*}
+		\begin{circuitikz}[american]
+		\draw
+		(0,4) to [V, l=$10V$, a= $E$] (0,0)
+		to (2,0)
+		to [european resistor, l=$R$, a=$1k\Omega$] (2,2)
+		to [short, -o] (3,2)
+		(2.5,1.75) node[anchor,north] {(on)}
+		(0,4) to [european resistor, l=$R$, a=$1M\Omega$] (2,4)
+		to [short, -o] (3,4)
+		(2.5,3.75) node[anchor, north] {on}
+		(3,3) node[ocirc] {}
+		(2.5,3) node [anchor, west] {off}
+		(2,0) to (5,0)
+		to [C,l=$C$, a=$47\mu F / 35V$] (5,3)
+		to (8,3) 
+		to [esource] (8,0)
+		to (5,0) 
+		(8,1.5)		node [anchor,mid] {V}
+		(5,3) to (4.5,3)
+		to [short, o-] (3.5,3)
+		node[inputarrow, rotate=180] {}	
+		(4,3) to (4,4.5)
+		(3.75,4.35) to (3.75, 4.5)
+		to (4.25,4.5)
+		to (4.25,4.35);
+		\end{circuitikz}
+		\end{equation*}
+		\captionof{figure}{Obwód do wyznaczania czasu ładowania pojemności.}
+	\end{figure}
+
+	%% Wykres Krzywej ładowania pojemności
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+			\begin{axis}[
+			width=0.9\textwidth,
+			height = 0.5\textwidth,
+			title={Krzywa ładowania pojemności},
+			xlabel={Czas w sekundach},
+			ylabel={Wartość napięcia zasilania na kondensatorze w V},
+			%
+			scaled x ticks = false,
+			xmax =130,
+			x tick label style={/pgf/number format/fixed},
+			xticklabel style = {rotate= 90},
+			x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+			%%
+			scaled y ticks = false,
+			ymax =10,
+			y tick label style={/pgf/number format/fixed},
+			y label style={at={(axis description cs:0,0.5)},anchor=mid},
+			%%
+			legend pos=north west,
+			ymajorgrids=true,
+			grid style=dashed,
+			]
+			%%
+			\addplot[
+			color=black,
+			mark=*,
+			]
+			coordinates {
+(0,0.047)(10,1.878)(20,3.433)(30,4.650)(40,5.422)(50,6.174)(60,6.745)(70,7.246)(80,7.608)(90,7.910)(100,8.143)(110,8.336)(120,8.489)
+			};
+					%%
+		\addplot[
+		color=blue,
+		mark=o,
+		]
+		coordinates {
+(0,0.0)(10,1.916546977223037)(20,3.465778722855799)(30,4.718092926577516)(40,5.7303952301316)(50,6.548685041694435)(60,7.210145766772953)(70,7.744834436531373)(80,8.177047510911702)(90,8.52642491917004)(100,8.808842505857626)(110,9.03713343533714)(120,9.221671335734513)
+
+		};
+			\legend{
+				$u_{C} (t) $,
+				$u_{C} (t) -$  krzywa teoretyczna ,
+			}
+			\end{axis}
+			\end{tikzpicture}
+	\end{figure}
+	
+	\subsection{Wyznaczenie przebiegu prądu ładowania pojemności w czasie, na podstawie bilansu napięć w oczku oraz wartości rezystancji $ R_{1} $}
+	\begin{gather*}
+	(E(1-e^{\frac{-t}{R_{C}}}))' = \\
+	=E'(1-e^{\frac{-t}{R_{C}}}) + E(1' - \ln e^{\frac{-1}{R_{C}}} \cdot e^{\frac{t}{R_{C}}}) =\\
+	0 + E(\frac{1}{R_{C}}) e^{\frac{-t}{R_{C}}} = \\
+	E\frac{1}{R_{C}} \cdot e^{\frac{-t}{R_{C}}}\\
+	I_{C}(t) = \frac{E}{R_{C}}e^\frac{-t}{R_{C}}
+	\end{gather*}
+	
+	\subsubsection*{Wykres wyznaczonej zależności}
+	
+	
+		%%WYKRES zależności UC
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=0.9\textwidth,
+		height = 0.5\textwidth,
+		title={Wykres zależności $i_{C}(t)$},
+		xlabel={Czas w sekundach},
+		ylabel={Prąd ładowania w A},
+		%
+		scaled x ticks = false,
+		x tick label style={/pgf/number format/fixed},
+		xticklabel style = {rotate= 90},
+		x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+		%%
+		scaled y ticks = false,
+		y tick label style={/pgf/number format/fixed},
+		y label style={at={(axis description cs:0,0.5)},anchor=mid},
+		%%
+		legend pos=north east,
+		ymajorgrids=true,
+		grid style=dashed,
+		]
+		%%
+		\addplot[
+		color=black,
+		mark=*,
+		]
+		coordinates {
+(10,0.025927893535392457)(20,0.00859428567998197)(30,0.0033934946110907947)(40,0.0011531808608643104)(50,0.0004923900754508685)(60,0.00020312387799445862)(70,0.0000879830086544996)(80,0.00003564640204661098)(90,0.000014468376558386956)(100,0.0000056999116870231325)(110,0.0000022294051805219755)(120,0.0000008550321692950958)
+
+		};
+		%%
+		\legend{
+			$i_{C}(t)$,
+		}
+		\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+	
+	
+\section{Obwód RC zasilany prądem przemiennym}
+	
+\subsection{Cel zadania}
+	Obserwacja zmiany skutecznej wartości prądu w obwodzie w funkcji częstotliwości pobudzenia
+	
+	%%WYKRES zależności UC
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=0.9\textwidth,
+		height = 0.5\textwidth,
+		title={Wykres zależności \underline{$U_{C}$} $= f(\omega)$},
+		xlabel={Częstotliwość w kHz},
+		ylabel={Wartości skuteczne napięć na pojemności w V},
+		%
+		scaled x ticks = false,
+		x tick label style={/pgf/number format/fixed},
+		xticklabel style = {rotate= 90},
+		x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+		%%
+		scaled y ticks = false,
+		y tick label style={/pgf/number format/fixed},
+		y label style={at={(axis description cs:0,0.5)},anchor=mid},
+		%%
+		legend pos=south west,
+		ymajorgrids=true,
+		grid style=dashed,
+		]
+		%%
+		\addplot[
+		color=black,
+		mark=*,
+		]
+		coordinates {
+(1,1.690)(2,1.730)(4,1.730)(6,1.730)(8,1.730)(10,1.700)(12,1.680)(14,1.660)(16,1.720)(18,1.650)(20,1.710)
+		};
+		%%
+		\legend{
+			\underline{$U_{C}$} $= f(\omega)$,
+		}
+		\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+	
+	%% WYKRES zależności IC
+	\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Wykres zależności $\underline{I_{C}} = \frac{\underline{U_{R}}}{R}$},
+	xlabel={Częstotliwość w kHz},
+	ylabel={Wartości skuteczne prądu w obwodzie w $ mA$},
+	%
+	scaled x ticks = false,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+	%%
+%	scaled y ticks = false,
+%	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:0,0.5)},anchor=mid},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+(1,0.107)(2,0.209)(4,0.41)(6,0.573)(8,0.744)(10,0.875)(12,0.985)(14,1.08)(16,1.15)(18,1.22)(20,1.28)
+	};
+	%%
+	\legend{
+		\underline{$I_{C}$},
+	}
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+
+\subsection{Wybrana częstotliwość pobudzenia}
+	Wybrano częstotliwość 20kHz.
+	
+	Wartości skuteczne napięć:
+	\begin{itemize}
+		\item na źródle: $ 1.71V  $
+		\item na rezystorze: $1.28V$
+	\end{itemize}
+	
+\section{Układ RL}
+
+	%%Wykres zależności UL
+	\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Wykres zależności \underline{$U_{L}$} $= f(\omega)$},
+	xlabel={Częstotliwość w kHz},
+	ylabel={Wartości skuteczne napięć na pojemności w V},
+	%
+	scaled x ticks = false,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+	%%
+	%	scaled y ticks = false,
+	%	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:0,0.5)},anchor=mid},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+(1,1.730)(2,1.760)(4,1.750)(6,1.790)(8,1.810)(10,1.780)(12,1.780)(14,1.790)(16,1.820)(18,1.830)(20,1.810)
+	};
+	%%
+	\legend{
+		\underline{$U_{L}$},
+	}
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+	%%%Wykres załeżności IL
+	\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+title={Wykres zależności $\underline{I_{L}} = \frac{\underline{U_{R}}}{R}$},
+	xlabel={Częstotliwość w kHz},
+	ylabel={Wartości skuteczne prądu w obwodzie w $ mA $},
+	%
+	scaled x ticks = false,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0,1)},anchor=mid},
+	%%
+	%	scaled y ticks = false,
+	%	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:0,0.5)},anchor=mid},
+	%%
+	legend pos=north east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+(1,1.600)(2,1.560)(4,1.350)(6,1.150)(8,0.947)(10,0.810)(12,0.718)(14,0.632)(16,0.567)(18,0.501)(20,0.465)
+	};
+	%%
+	\legend{
+		\underline{$\underline{I_{L}} $},
+	}
+ 	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+
+\end{document}
+
+
