@@ -113,6 +113,31 @@
 		\captionof{figure}{Obwód do wyznaczania czasu ładowania pojemności.}
 	\end{figure}
 
+
+	\begin{figure}[H]
+		\begin{equation*}
+		\begin{array}{|l|l|}
+		\hline
+		$Czas [s]$&Napięcie [V]\\		\hline
+		0&0.047\\
+		10&1.878\\
+		20&3.433\\
+		30&4.650\\
+		40&5.422\\
+		50&6.174\\
+		60&6.745\\
+		70&7.246\\
+		80&7.608\\
+		90&7.910\\
+		100&8.143\\
+		110&8.336\\
+		120&8.489\\
+		\hline
+		\end{array}
+		\end{equation*}
+		\captionof{table}{Tabela przedstawiająca wyniki pomiarów}
+	\end{figure}
+	
 	%% Wykres Krzywej ładowania pojemności
 		\begin{figure}[H]
 			\centering
@@ -166,11 +191,11 @@
 	
 	\subsection{Wyznaczenie przebiegu prądu ładowania pojemności w czasie, na podstawie bilansu napięć w oczku oraz wartości rezystancji $ R_{1} $}
 	\begin{gather*}
-	(E(1-e^{\frac{-t}{R_{C}}}))' = \\
-	=E'(1-e^{\frac{-t}{R_{C}}}) + E(1' - \ln e^{\frac{-1}{R_{C}}} \cdot e^{\frac{t}{R_{C}}}) =\\
-	0 + E(\frac{1}{R_{C}}) e^{\frac{-t}{R_{C}}} = \\
-	E\frac{1}{R_{C}} \cdot e^{\frac{-t}{R_{C}}}\\
-	I_{C}(t) = \frac{E}{R_{C}}e^\frac{-t}{R_{C}}
+	(E(1-e^{\frac{-t}{RC}}))' = \\
+	=E'(1-e^{\frac{-t}{RC}}) + E(1' - \ln e^{\frac{-1}{RC}} \cdot e^{\frac{t}{RC}}) =\\
+	0 + E(\frac{1}{RC}) e^{\frac{-t}{RC}} = \\
+	E\frac{1}{RC} \cdot e^{\frac{-t}{RC}}\\
+	I_{C}(t) = \frac{E}{R}e^\frac{-t}{RC}
 	\end{gather*}
 	
 	\subsubsection*{Wykres wyznaczonej zależności}
@@ -219,10 +244,60 @@
 	
 	
 \section{Obwód RC zasilany prądem przemiennym}
-	
+	\subsection{Badany obwód}
+	\begin{figure}[H]
+		\begin{equation*}
+		\begin{circuitikz}[american]
+		\draw
+		(0,0) to [short,-*] (5,0)
+		(2,0.5) node[anchor,mid] {Czarny przewód z kanału X oscyloskopu};
+		\draw
+		(5,0)to (8,0)
+		(11,0.5) node[anchor,mid] {Czarny przewód z kanału Y oscyloskopu}
+		(8,0) to [short, *-] (13,0)
+		(5,0) to [sV,l=$V_{in}$,a=$5V$] (5,3);
+		\draw[red]
+		(2,3.5) node[anchor,mid] {Czerwony przewód z kanału X oscyloskopu}
+		(0,3) to [short,-*,color=red] (5,3);
+		\draw
+		(5,3) to[C,l=$C$,a=$10nF$](8,3);
+		\draw[red]
+		(11,3.5) node[anchor,mid] {Czerwony przewód z kanału Y oscyloskopu}
+		(8,3) to [short,*-,color=red](13,3);
+		\draw
+		(8,0) to [european resistor,l=$R$,a=$1k\Omega$] (8,3);
+		\end{circuitikz}
+		\end{equation*}
+	\end{figure}
 \subsection{Cel zadania}
+
 	Obserwacja zmiany skutecznej wartości prądu w obwodzie w funkcji częstotliwości pobudzenia
 	
+	
+	\subsection{tabela}
+	Wzór do obliczeń:
+	
+	$E - U_{C} - U_{R = 0}$
+	\begin{figure}[H]
+		\begin{equation*}
+		\begin{array}{|l|l|l|l|}
+		\hline
+		$częstotliwość$ [kHz]&X[V]&Y[V]&X-Y[V]\\\hline
+		1&1.690&0.107&1.583\\
+		2&1.730&0.209&1.521\\
+		4&1.730&0.410&1.320\\
+		6&1.730&0.573&1.157\\
+		8&1.730&0.744&0.986\\
+		10&1.700&0.875&0.825\\
+		12&1.680&0.985&0.695\\
+		14&1.660&1.080&0.579\\
+		16&1.720&1.150&0.570\\
+		18&1.650&1.220&0.429\\
+		20&1.710&1.280&0.429\\
+		\hline
+		\end{array}
+		\end{equation*}
+	\end{figure}
 	%%WYKRES zależności UC
 	\begin{figure}[H]
 		\centering
@@ -253,13 +328,12 @@
 		mark=*,
 		]
 		coordinates {
-(1,1.690)(2,1.730)(4,1.730)(6,1.730)(8,1.730)(10,1.700)(12,1.680)(14,1.660)(16,1.720)(18,1.650)(20,1.710)
+(1,1.583)(2,1.521)(4,1.32)(6,1.157)(8,0.986)(10,0.825)(12,0.695)(14,0.5799999999999998)(16,0.5700000000000001)(18,0.42999999999999994)(20,0.42999999999999994)
 		};
 		%%
 		\legend{
 			\underline{$U_{C}$} $= f(\omega)$,
-		}
-		\end{axis}
+		}		\end{axis}
 		\end{tikzpicture}
 	\end{figure}
 	
@@ -304,6 +378,8 @@
 \end{figure}
 
 
+\subsection{Relacja między reaktancją pojemnościową, czestotliwością pobudzenia, oraz wartością prądu}
+Wraz z wrostem częstotliwości pobudzenia wartość reaktnacji maleje, a wartość prądu rośnie.
 \subsection{Wybrana częstotliwość pobudzenia}
 	Wybrano częstotliwość 20kHz.
 	
@@ -315,9 +391,80 @@
 
 	$\triangle x = 4.80 \mu s$
 	
-\section{Układ RL}
+	\begin{equation*}
+	2\pi \cdot 20000 \cdot 4.8 \cdot 10^{-6} \approx 34.56\degres
+	\end{equation*}
+	
+	przesunięcie fazowe $34.56\degres$
+	\begin{gather*}
+	R=996\Omega\\
+	Z_{C} = -j\frac{1}{\omega C}\\
+	\underline{Z}=R-j\frac{1}{2\pi \varphi C} = 996 - j795.8\Omega\\
+	I = \frac{V}{\underline{Z}}= \frac{2.5}{996-j795.8}
+	= 0.00153 + j0.00122
+	I_{z}=Re[J]=0.0153=1.53mA\\
+	V_{R}= IR = (0.00153 + j0.00122) \cdot 996 = 1.52 + j1.22\\
+	V_{R} = 1.52V\\
+	V=2.5V\\
+	\underline{V} = \frac{2.5}{\sqrt{2}} = 1.77V\\
+	V_{C} = \underline{V} - V_{R} = 0.49V
+	\end{gather*}
+	
+	
 
+\section{Układ RL}
+	\subsection{Badany obwód}
+		\begin{figure}[H]
+		\begin{equation*}
+
+		\begin{circuitikz}[american]
+		\draw
+		(0,0) to [short,-*] (5,0)
+		(2,0.5) node[anchor,mid] {Czarny przewód z kanału X oscyloskopu};
+		\draw
+		(5,0)to (8,0)
+		(11,0.5) node[anchor,mid] {Czarny przewód z kanału Y oscyloskopu}
+		(8,0) to [short, *-] (13,0)
+		(5,0) to [sV,l=$V_{in}$,a=$5V$] (5,3);
+		\draw[red]
+		(2,3.5) node[anchor,mid] {Czerwony przewód z kanału X oscyloskopu}
+		(0,3) to [short,-*,color=red] (5,3);
+		\draw
+		(5,3) to[L,l=$L$,a=$33mH$](8,3);
+		\draw[red]
+		(11,3.5) node[anchor,mid] {Czerwony przewód z kanału Y oscyloskopu}
+		(8,3) to [short,*-,color=red](13,3);
+		\draw
+		(8,0) to [european resistor,l=$R$,a=$1k\Omega$] (8,3);
+		\end{circuitikz}
+		\end{equation*}
+	\end{figure}
 	%%Wykres zależności UL
+	
+		\subsection{tabela}
+			Wzór do obliczeń:
+		
+		$E - U_{C} - U_{R = 0}$
+	\begin{figure}[H]
+		\begin{equation*}
+		\begin{array}{|l|l|l|l|}
+		\hline
+		$częstotliwość$ [kHZ]&X[V]&Y[V]&X-Y[V]\\\hline
+1&1.730&1.600&0.129\\
+2&1.760&1.560&0.199\\
+4&1.750&1.350&0.399\\
+6&1.790&1.150&0.640\\
+8&1.810&0.947&0.863\\
+10&1.780&0.810&0.970\\
+12&1.780&0.718&1.062\\
+14&1.790&0.632&1.158\\
+16&1.820&0.567&1.253\\
+18&1.830&0.501&1.329\\
+20&1.810&0.465&1.345\\
+		\hline
+		\end{array}
+		\end{equation*}
+	\end{figure}
 	\begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
@@ -347,7 +494,8 @@
 	mark=*,
 	]
 	coordinates {
-(1,1.730)(2,1.760)(4,1.750)(6,1.790)(8,1.810)(10,1.780)(12,1.780)(14,1.790)(16,1.820)(18,1.830)(20,1.810)
+(1,0.1299999999999999)(2,0.19999999999999996)(4,0.3999999999999999)(6,0.6400000000000001)(8,0.8630000000000001)(10,0.97)(12,1.062)(14,1.158)(16,1.2530000000000001)(18,1.3290000000000002)(20,1.345)
+
 	};
 	%%
 	\legend{
@@ -391,23 +539,56 @@ title={Wykres zależności $\underline{I_{L}} = \frac{\underline{U_{R}}}{R}$},
 	};
 	%%
 	\legend{
-		\underline{$\underline{I_{L}} $},
+		$\underline{I_{L}} $}
 	}
  	\end{axis}
 	\end{tikzpicture}
 \end{figure}
-
+\subsection{Relacja między reaktancją pojemnościową, czestotliwością pobudzenia, oraz wartością prądu}
+Wraz z wrostem częstotliwości pobudzenia wartość reaktnacji rośnie, a wartość prądu maleje.
 \subsection{Wybrana częstotliwość pobudzenia}
 Wybrano częstotliwość 20kHz.
 
 Wartości skuteczne napięć:
 \begin{itemize}
 	\item na źródle: $ 1.85V  $
-	\item na rezystorze: $447m$
+	\item na rezystorze: $447mV$
 \end{itemize}
 
 $\triangle x = 11.2 \mu s$
 
+
+\begin{equation*}
+2\pi \cdot 20000 \cdot 11.2 \cdot 10^{-6} =0.448\pi \approx 80.8\degres = \varphi
+\end{equation*}
+
+przesunięcie fazowe $\varphi = 80.8$
+
+
+\begin{equation*}
+Z = R +j\omega L
+\end{equation*}
+
+\begin{equation*}
+|Z| = \sqrt{R^{2} + (\omega L)^{2}
+\end{equation*}
+
+\begin{equation*}
+I_{C} = \dfrac{U_{Vpp}}{|Z|}
+\end{equation*}
+
+
+
+
+\newpage
+\begin{thebibliography}{0}
+	\bibitem{pa} S. Bolkowski, Teoria obwodów elektrycznych, ser. Elektrotechnika teoretyczna. Wydawnictwa NaukowoTechniczne,
+	1986, no. t. 1.
+	\bibitem(ps) P. Horowitz and W. Hill, Sztuka elektroniki. WKiŁ, 2003, vol. 1.
+	\bibitem{lp} D. Halliday, R. Resnick, and J. Walker, Podstawy fizyki. PWN, 2003, vol. 3.
+	\bibitem{fp} J. Watson, Elektronika. WKiŁ, 1999.
+	\bibitem{cl} Z. Nosal and J. Baranowski, Układy elektroniczne. WNT, 2003.
+\end{thebibliography}
 \end{document}
 
 
