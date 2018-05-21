@@ -1,0 +1,578 @@
+\documentclass[polish,polish,a4paper]{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pslatex}
+\usepackage{pgfplots}
+\usepackage{circuitikz} 
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usetikzlibrary{circuits.ee.IEC}
+\usepackage{anysize}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\marginsize{2.5cm}{2.5cm}{2cm}{2cm}
+
+\newcommand{\PRzFieldDsc}[1]{\sffamily\bfseries\scriptsize #1}
+\newcommand{\PRzFieldCnt}[1]{\textit{#1}}
+\newcommand{\PRzHeading}[8]{
+	%% #1 - nazwa laboratorium
+	%% #2 - kierunek 
+	%% #3 - specjalność 
+	%% #4 - rok studiów 
+	%% #5 - symbol grupy lab.
+	%% #6 - temat 
+	%% #7 - numer lab.
+	%% #8 - skład grupy ćwiczeniowej
+	
+	\begin{center}
+		\begin{tabular}{ p{0.32\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.12\textwidth} p{0.12\textwidth} }
+			
+			&   &   &   &   \\
+			\hline
+			\multicolumn{5}{|c|}{}\\[-1ex]
+			\multicolumn{5}{|c|}{{\LARGE #1}}\\
+			\multicolumn{5}{|c|}{}\\[-1ex]
+			
+			\hline
+			\multicolumn{1}{|l|}{\PRzFieldDsc{Kierunek}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Specjalność}}	& \multicolumn{1}{|l|}{\PRzFieldDsc{Rok studiów}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Symbol grupy lab.}} \\
+			\multicolumn{1}{|c|}{\PRzFieldCnt{#2}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#3}}		& \multicolumn{1}{|c|}{\PRzFieldCnt{#4}}		& \multicolumn{2}{|c|}{\PRzFieldCnt{#5}} \\
+			
+			\hline
+			\multicolumn{4}{|l|}{\PRzFieldDsc{Temat Laboratorium}}		& \multicolumn{1}{|l|}{\PRzFieldDsc{Numer lab.}} \\
+			\multicolumn{4}{|c|}{\PRzFieldCnt{#6}}				& \multicolumn{1}{|c|}{\PRzFieldCnt{#7}} \\
+			
+			\hline
+			\multicolumn{5}{|l|}{\PRzFieldDsc{Skład grupy ćwiczeniowej oraz numery indeksów}}\\
+			\multicolumn{5}{|c|}{\PRzFieldCnt{#8}}\\
+			
+			\hline
+			\multicolumn{3}{|l|}{\PRzFieldDsc{Uwagi}}	& \multicolumn{2}{|l|}{\PRzFieldDsc{Ocena}} \\
+			\multicolumn{3}{|c|}{\PRzFieldCnt{\ }}		& \multicolumn{2}{|c|}{\PRzFieldCnt{\ }} \\
+			
+			\hline
+		\end{tabular}
+	\end{center}
+}
+
+
+
+\begin{document}
+
+
+	\PRzHeading{Laboratorium Podstaw Elektroniki}{Informatyka}{--}{I}{I3}{Tranzystory}{5}{Piotr Więtczak(132339), Robert Ciemny(136693), Kamil Basiukajc(136681)}
+\section{Charakterystyka bramkowa nMOS}
+
+\subsection{Cel zadania}
+
+Wyznaczenie empirycznej zależności pomiędzy sygnałem sterującym a sterowanym.
+
+\subsection{Przebieg zadania}
+
+Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu $I_{D}$ w zakresie $<0..5> V$. Wyniki pomiarów przedstawiono w poniższej tabeli.
+
+
+%%  rys 1.6.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	(0,0) to[V,v=$5V$] (0,3)
+	to (0,5)
+	to [esource](3,5)
+	to [european resistor, l=$R_{1}$, a=$1k\Omega$](6,5)
+	(6,3) node[nmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(6,0) to (mos.source)
+	(mos.drain) to (6,5)
+	(mos.gate) to (3,3)
+	(3,0) to [V,v=$0..5V$] (3,3)
+	(4.5,0) to [esource] (4.5,3)
+	(4.5,1.45) node[anchor = mid] {V}
+	(1.5,4.95) node[anchor = mid] {mA}
+	(3,0) node[ground] {};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki bramkowej tranzystora nMOS}
+\end{figure}
+
+%tabelka	
+	\begin{figure}[H]
+\begin{spacing}{1.5}
+		\begin{equation*}
+\begin{array}{|r|r|}
+\hline
+\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
+\multicolumn{1}{|c|}{ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
+0.0&0.000\\
+0.5&0.000\\
+1.0&0.000\\
+1.5&0.000\\
+2.0&1.360\\
+2.1&3.641\\
+2.2&4.905\\
+2.3&4.699\\
+2.4&4.987\\
+2.5&4.986\\
+3.0&5.000\\
+3.5&5.009\\
+4.0&5.011\\
+4.5&5.014\\
+5.0&5.015\\\hline
+\end{array}
+\end{equation*}
+\end{spacing}
+\captionof{table}{Tabela przedstawiająca wyniki pomiarów}
+	\end{figure}
+
+	%%WYKRES 
+\begin{figure}[H]
+	
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Wykres przedstawiający wyniki pomiarów},
+	ylabel={wartości prądu drenu $I_{d}$ $[ms]$},
+	xlabel ={wartości napięcia }
+	%
+	scaled x ticks = false,
+	xtick distance = 0.5,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0.15)},anchor=north},
+	%%
+	ytick distance = 1,
+	scaled y ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+(0.0,0.000)(0.5,0.000)(1.0,0.000)(1.5,0.000)(2.0,1.360)(2.1,3.641)(2.2,4.905)(2.3,4.699)(2.4,4.987)(2.5,4.986)(3.0,5.000)(3.5,5.009)(4.0,5.011)(4.5,5.014)(5.0,5.015)
+
+	};
+	%%
+	\addplot[
+	color=blue,
+	mark=triangle,
+	]
+	coordinates {
+		(0,0)
+		
+	};
+	\legend{
+		$I_{D} -pomiary$,
+	}
+	%%
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+\section{Charakterystyka bramkowa pMOS}
+
+%%  rys 1.7.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (4.5,0)
+	(4.5,0) to [esource] (8,0)
+	(0,0) to[V,v=$5V$] (0,3)
+	to (0,5)
+	to (8,5)
+	(8,3) node[pmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(8,0) to [european resistor, l=$R_{7}$, a=$1k\Omega$] (mos.drain)
+	(mos.source) to (8,5)
+	(mos.gate) to (3,3)
+	(3,0) to [V,v=$0..5V$] (3,3)
+	(4.5,0) to [esource] (4.5,3)
+	(4.5,1.45) node[anchor = mid] {V}
+	(3,0) node[ground] {}
+	(6.25,0) node[anchor = mid] {mA};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki bramkowej tranzystora pMOS}
+\end{figure}
+
+%tabelka
+	\begin{figure}[H]
+	\begin{spacing}{1.5}
+		\begin{equation*}
+		\begin{array}{|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ $Bramka-$ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
+0.0&5.000\\
+0.5&5.000\\
+1.0&5.000\\
+1.5&5.000\\
+2.0&4.972\\
+2.1&4.950\\
+2.2&4.902\\
+2.3&4.721\\
+2.4&4.166\\
+2.5&2.793\\
+2.6&1.050\\
+2.7&0.563\\
+2.8&0.249\\
+2.9&0.044\\
+3.0&0.023\\
+3.5&0.000\\
+4.0&0.000\\
+4.5&0.000\\
+5.0&0.000\\\hline
+		\end{array}
+		\end{equation*}
+	\end{spacing}
+\end{figure}
+
+	%%WYKRES 
+\begin{figure}[H]
+	
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Czasy obliczania etykiet dla grafów},
+	xlabel={Liczba wierzchołków},
+	ylabel={Czas obliczania w misekundach},
+	%
+	scaled x ticks = false,
+	xtick distance = 0.5,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0.15)},anchor=north},
+	%%
+	ytick distance = 1,
+	scaled y ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+(0.0,5.000)(0.5,5.000)(1.0,5.000)(1.5,5.000)(2.0,4.972)(2.1,4.950)(2.2,4.902)(2.3,4.721)(2.4,4.166)(2.5,2.793)(2.6,1.050)(2.7,0.563)(2.8,0.249)(2.9,0.044)(3.0,0.023)(3.5,0.000)(4.0,0.000)(4.5,0.000)(5.0,0.000)
+		
+	};
+	%%
+	\addplot[
+	color=blue,
+	mark=triangle,
+	]
+	coordinates {
+		(0,0)
+		
+	};
+	\legend{
+		$I_{D} -pomiary$,
+	}
+	%%
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+\section{Charakterystyka drenowa nMOS}
+
+
+%%  rys 1.8.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	(0,0) to[V,v=$0..10V$] (0,3)
+	to (0,5)
+	to [esource](3,5)
+	to [european resistor, l=$R_{2}$, a=$1k\Omega$](6,5)
+	(6,3) node[nmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(6,0) to (mos.source)
+	(mos.drain) to (6,5)
+	(mos.gate) to (3,3)
+	(3,0) to [V,v=$5V$] (3,3)
+	(1.5,4.95) node[anchor = mid] {mA}
+	(3,0) node[ground] {}
+	(6,0) to (7.5,0)
+	to [esource] (7.5,5)
+	to(6,5)
+	(7.5,2.45) node[anchor = mid] {V};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki drenowej tranzystora nMOS}
+\end{figure}
+
+%tabelka	
+\begin{figure}[H]
+	\begin{spacing}{1.5}
+		\begin{equation*}
+		\begin{array}{|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ $Bramka-$ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
+0&0.000\\
+1&1.097\\
+2&2.172\\
+3&3.140\\
+4&4.125\\
+5&5.114\\
+6&5.983\\
+7&6.950\\
+8&8.160\\
+9&9.216\\
+10&10.158\\
+\hline
+		\end{array}
+		\end{equation*}
+	\end{spacing}
+\end{figure}
+
+
+%%  rys 1.9.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	(0,0) to[V,v=$0..10V$] (0,3)
+	to (0,5)
+	to [esource](3,5)
+	to [european resistor, l=$R_{3}$, a=$1k\Omega$](6,5)
+	(6,3) node[nmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(6,0) to (mos.source)
+	(mos.drain) to (6,5)
+	(mos.gate) to (5,3)
+	(3,3) to [european resistor, l=$R_{4}$, a= $1k\Omega$] (5,3)
+	(5,0) to [european resistor, l=$R_{5}$ , a=$1k\Omega$] (5,3)
+	(3,0) to [V,v=$5V$] (3,3)
+	(1.5,4.95) node[anchor = mid] {mA}
+	(3,0) node[ground] {}
+	(6,0) to (7.5,0)
+	to [esource] (7.5,5)
+	to(6,5)
+	(7.5,2.45) node[anchor = mid] {V};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki drenowej dla obniżonego napięcia bramki}
+\end{figure}
+
+
+
+
+\section{Charakterystyka drenowa pMOS}
+
+
+%%  rys 1.10.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (3,0)
+	to [esource] (5,0)
+	(4,0) node[anchor = mid] {mA}
+	(0,0) to[V,v=$0..10V$] (0,3)
+	to (0,5)
+	to (5,5)
+	(5,3) node[pmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(5,0) to [european resistor, l=$R_{6}$, a=$1k\Omega$] (mos.drain)
+	(mos.source) to (5,5)
+	(mos.gate) to (3,3)
+	(3,0) to [V,v=$5V$] (3,3)
+	(3,0) node[ground] {}
+	(5,0) to (6.5,0)
+	to [esource] (6.5,5)
+	to (5,5)
+	(6.5,2.45) node[anchor = mid] {V};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki drenowej tranzystora pMOS}
+\end{figure}
+
+
+
+
+\section{Tranzystor nMOS jako przełącznik}
+
+
+
+
+%%  rys 1.11.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (5,0)
+	to [esource] (7,0)
+	(6,0) node[anchor = mid] {mA}
+	(0,0) to[V,v=$0..10V$] (0,3)
+	to (0,5)
+	to (7,5)
+	(7,3) node[pmos] (mos) {}
+	(mos.drain) node[anchor = west] {D}
+	(mos.source) node[anchor = west] {S}
+	(mos.gate) node[anchor = south] {G}
+	(7,0) to [european resistor, l =$R_{8}$ , a=$1k\Omega$](mos.drain)
+	(mos.source) to (7,5)
+	(mos.gate) to (5,3)
+	(3,3) to [european resistor, l = $R_{9}$, a = $1k\Omega$] (5,3)
+	(3,0) to [V,v=$5V$] (3,3)
+	(5,0) to [european resistor, l = $R_{10}$, a = $1k\Omega$] (5,3)
+	(3,0) node[ground] {}
+	(7,0) to (8.5,0)
+	to [esource] (8.5,5)
+	to (7,5)
+	(8.5,2.45) node[anchor = mid] {V};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Układ do badania charakterystyki drenowej dla obniżonego napięcia bramki pMOS}
+\end{figure}
+
+%%  rys 1.14.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	to [V,v=$10V$] (6,3)
+	(6,3) to  [european resistor, a = $R_{11}$, l= $1k\Omega$](4,3)
+	(2,3) to [leD-,invert,a=LED1] (4,3)
+	(2,2) node[nmos] (mos) {}
+	(mos.drain) node[anchor = east] {D}
+	(mos.source) node[anchor = east] {S}
+	(mos.gate) node[anchor = south] {G}
+	(2,3) to (mos.drain)
+	(2,0) to (mos.source)
+	(mos.gate) to (0,2)
+	(0,2) to [european resistor, a =$R_{12}$, l=$1M\Omega$] (0,0)
+	(0,2) to [short, -*] (-1,2)
+	(6,3) to (6,4.5)
+	to (-1,4.5)
+	to [short,-*] (-1,3)
+	(-1,2.5) node[anchor = mid] {A-A};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Schemat układu do badania tranzystora nMOS w roli przełącznika}
+\end{figure}
+
+%%  rys 1.15.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	to [V,v=$10V$] (6,3)
+	(6,3) to  [european resistor, a = $R_{13}$, l= $1k\Omega$](4,3)
+	(2,3) to [leD-,invert , a =LED2] (4,3)
+	(2,2) node[nmos] (mos) {}
+	(mos.drain) node[anchor = east] {D}
+	(mos.source) node[anchor = east] {S}
+	(mos.gate) node[anchor = south] {G}
+	(2,3) to (mos.drain)
+	(2,0) to (mos.source)
+	(mos.gate) to (0,2)
+	(0,2) to [european resistor, a =$R_{14}$, l=$47k\Omega$] (0,0)
+	(0,0) to (-3,0)
+	to [C,l=$C1$,a=$100 \mu F$] (-3,2)
+	to (0,2)
+	(-3,2) to [short, -*] (-4,2)
+	(6,3) to (6,4.5)
+	to (-4,4.5)
+	to [short,-*](-4,3)
+	(-4,2.5) node[anchor = mid] {A-A};
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Model układu z opóźnionym wyłączaniem}
+\end{figure}
+
+
+
+%%  rys 1.15.
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}[american]
+	\draw
+	(0,0) to (6,0)
+	to [V,v=$10V$] (6,3)
+	(6,3) to  [european resistor, a = $R_{15}$, l= $1k\Omega$](4,3)
+	(2,3) to [leD-, invert, a = LED3] (4,3)
+	(2,2) node[nmos] (mos) {}
+	(2,3) to (mos.drain)
+	(2,0) to (mos.source)
+	(mos.gate) to (0,2)
+	(0,2) to [european resistor, a =$R_{16}$, l=$1M\Omega$] (0,0)
+	(0,0) to (-2,0)
+	to [sV,l=BNC] (-2,2)
+	to (-2,2)
+	(-2,0) node[ground]{}
+	(-2,2) to (0,2);
+	\draw [red]
+	(-2,2) to (-2,6)
+	(2,3) to (2,4.5)
+	to (6,4.5);
+	\draw
+	(0,6) to (0,3)
+	(0,3) node[ground] {}
+	(6,5.5) to (2,5.5)
+	(2,5.5) node[ground,rotate =270] {};	
+	\end{circuitikz}
+	\end{equation*}
+\end{figure}
+
+\section{Czas załączania tranzystora}
+
+\section{title}
+	\begin{thebibliography}{99}
+		\bibitem{pa}S. Bolkowski,  \emph{Teoria obwodów elektrycznych} , ser. Elektrotechnika teoretyczna. Wydawnictwa NaukowoTechniczne,
+		1986, 
+		\bibitem{pa1}P. Horowitz and W. Hill, \emph{Sztuka elektroniki}. WKiŁ, 2003, vol. 1.
+		\bibitem{pa2}D. Halliday, R. Resnick, and J. Walker, \emph{Podstawy fizyki.} PWN, 2003, vol. 3.
+		\bibitem{pa4}J. Watson,\emph{ Elektronika.} WKiŁ, 1999.
+		\bibitem{pa5}Z. Nosal and J. Baranowski, \emph{Układy elektroniczne.} WNT, 2003.
+	\end{thebibliography}
+	\newpage
+	\tableofcontents
+		
+\end{document}
+
+

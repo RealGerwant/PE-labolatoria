@@ -1,0 +1,10 @@
+\select@language {polish}
+\contentsline {section}{\numberline {1}Charakterystyka bramkowa nMOS}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Cel zadania}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Przebieg zadania}{1}{subsection.1.2}
+\contentsline {section}{\numberline {2}Charakterystyka bramkowa pMOS}{3}{section.2}
+\contentsline {section}{\numberline {3}Charakterystyka drenowa nMOS}{4}{section.3}
+\contentsline {section}{\numberline {4}Charakterystyka drenowa pMOS}{6}{section.4}
+\contentsline {section}{\numberline {5}Tranzystor nMOS jako prze\IeC {\l }\IeC {\k a}cznik}{6}{section.5}
+\contentsline {section}{\numberline {6}Czas za\IeC {\l }\IeC {\k a}czania tranzystora}{7}{section.6}
+\contentsline {section}{\numberline {7}title}{7}{section.7}
