@@ -14,6 +14,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{color}
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
@@ -79,7 +80,7 @@ Wyznaczenie empirycznej zależności pomiędzy sygnałem sterującym a sterowany
 
 \subsection{Przebieg zadania}
 
-Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu $I_{D}$ w zakresie $<0..5> V$. Wyniki pomiarów przedstawiono w poniższej tabeli.
+Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia $U_{GS}$ zmienianego w zakresie $<0..5> V$. Po odkryciu lawinowego wzrostu przepływu prądu w zakresie $<2.0,2.5>$ zagęszczono punkty pomiarowe w tym obszarze. Wyniki pomiarów przedstawiono w poniższej tabeli.
 
 
 %%  rys 1.6.
@@ -102,6 +103,9 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	(3,0) to [V,v=$0..5V$] (3,3)
 	(4.5,0) to [esource] (4.5,3)
 	(4.5,1.45) node[anchor = mid] {V}
+	(5,0.5) to (5,2.5)
+	node[currarrow,rotate = 90] {}
+	(5.5,1.5) node[anchor = mid] {$ U_{GS} $}
 	(1.5,4.95) node[anchor = mid] {mA}
 	(3,0) node[ground] {};
 	\end{circuitikz}
@@ -113,30 +117,35 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\begin{figure}[H]
 \begin{spacing}{1.5}
 		\begin{equation*}
-\begin{array}{|r|r|}
+\begin{array}{|r|r|r|}
 \hline
-\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
-\multicolumn{1}{|c|}{ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
-0.0&0.000\\
-0.5&0.000\\
-1.0&0.000\\
-1.5&0.000\\
-2.0&1.360\\
-2.1&3.641\\
-2.2&4.905\\
-2.3&4.699\\
-2.4&4.987\\
-2.5&4.986\\
-3.0&5.000\\
-3.5&5.009\\
-4.0&5.011\\
-4.5&5.014\\
-5.0&5.015\\\hline
+\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
+\multicolumn{1}{|c|}{ $źródła $ [V] }&\multicolumn{1}{|c|}{U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
+0&0&0.000\\
+0.5&0.491&0.000\\
+1.0&1.120&0.000\\
+1.5&1.459&0.000\\
+2.0&1.982&1.360\\
+2.1&2.043&3.641\\
+2.2&2.182&4.905\\
+2.3&2.293&4.699\\
+2.4&2.356&4.987\\
+2.5&2.488&4.986\\
+3.0&2.988&5.000\\
+3.5&3.431&5.009\\
+4.0&4.051&5.011\\
+4.5&4.492&5.014\\
+5.0&4.880&5.015\\
+\hline
 \end{array}
 \end{equation*}
 \end{spacing}
 \captionof{table}{Tabela przedstawiająca wyniki pomiarów}
 	\end{figure}
+
+
+{\LARGE \colorbox{red}{do tykresu jeszcze wartość napięcia progowego Uth}}
+
 
 	%%WYKRES 
 \begin{figure}[H]
@@ -147,8 +156,8 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	width=0.9\textwidth,
 	height = 0.5\textwidth,
 	title={Wykres przedstawiający wyniki pomiarów},
-	ylabel={wartości prądu drenu $I_{d}$ $[ms]$},
-	xlabel ={wartości napięcia }
+	ylabel={wartości prądu drenu $I_{d}$ $[mA]$},
+	xlabel ={wartości napięcia $U_{GS}$ $[V]$},
 	%
 	scaled x ticks = false,
 	xtick distance = 0.5,
@@ -171,8 +180,7 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	mark=*,
 	]
 	coordinates {
-(0.0,0.000)(0.5,0.000)(1.0,0.000)(1.5,0.000)(2.0,1.360)(2.1,3.641)(2.2,4.905)(2.3,4.699)(2.4,4.987)(2.5,4.986)(3.0,5.000)(3.5,5.009)(4.0,5.011)(4.5,5.014)(5.0,5.015)
-
+(0,0.000)(0.491,0.000)(1.120,0.000)(1.459,0.000)(1.982,1.360)(2.043,3.641)(2.182,4.905)(2.293,4.699)(2.356,4.987)(2.488,4.986)(2.988,5.000)(3.431,5.009)(4.051,5.011)(4.492,5.014)(4.880,5.015)
 	};
 	%%
 	\addplot[
@@ -191,13 +199,30 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\end{tikzpicture}
 \end{figure}
 
+
+\subsection{Wniosek }
+W rozpatrywanym układzie, aby tranzystor nMOS zaczął przewodzić prąd napięcie bramki musi
+{\LARGE \colorbox{red}{tutaj 1.5.1.5}}
+
 \section{Charakterystyka bramkowa pMOS}
+\subsection{Cel zadania}
+Wykazanie dualizmu między działaniem tranzystora pMOS względem nMOS.
+\subsection{Przebieg zadania}
+
+
+
+Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu $I_{D}$ w zależności od napięcia wytwarzanego przez zasilacz. Po odkryciu lawinowego wzrostu prądu drenu w zakresie $<2.0,3.0>$ zagęszczono punkty pomiarowe w tym obszarze.
+
+Na podstawie uzyskanych wyników obliczono wartości napięć bramka-źródło dla tranzystora pMOS korzystając z napięciowego prawa Kirchhoffa: $U_{GS} = -(U_{SS}-U_{1})$ dla $U_{SS} = 5V$.
 
 %%  rys 1.7.
 \begin{figure}[H]
 	\begin{equation*}
 	\begin{circuitikz}[american]
 	\draw
+	(-1.5,1) to (-1.5,4)
+	node[currarrow, rotate = 90] {}
+	(-2,2.5) node[anchor = mid] {$U_{SS}$}
 	(0,0) to (4.5,0)
 	(4.5,0) to [esource] (8,0)
 	(0,0) to[V,v=$5V$] (0,3)
@@ -213,6 +238,13 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	(3,0) to [V,v=$0..5V$] (3,3)
 	(4.5,0) to [esource] (4.5,3)
 	(4.5,1.45) node[anchor = mid] {V}
+	(5,0.5) to (5,2.5)
+	node[currarrow, rotate = 90] {}
+		(5.5,1.5) node[anchor = mid] {$ U_{1} $}
+		(7.5,4.5) to (7.5,3.7)
+	node[currarrow, rotate = -90] {}
+	(7.0,3.9)	node[anchor = mid] {$U_{GS}$}
+
 	(3,0) node[ground] {}
 	(6.25,0) node[anchor = mid] {mA};
 	\end{circuitikz}
@@ -222,35 +254,38 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 
 %tabelka
 	\begin{figure}[H]
-	\begin{spacing}{1.5}
+	\begin{spacing}{1.3}
 		\begin{equation*}
-		\begin{array}{|r|r|}
+		\begin{array}{|r|r|r|r|}
 		\hline
-		\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
-		\multicolumn{1}{|c|}{ $Bramka-$ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
-0.0&5.000\\
-0.5&5.000\\
-1.0&5.000\\
-1.5&5.000\\
-2.0&4.972\\
-2.1&4.950\\
-2.2&4.902\\
-2.3&4.721\\
-2.4&4.166\\
-2.5&2.793\\
-2.6&1.050\\
-2.7&0.563\\
-2.8&0.249\\
-2.9&0.044\\
-3.0&0.023\\
-3.5&0.000\\
-4.0&0.000\\
-4.5&0.000\\
-5.0&0.000\\\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{  V_{1}$ $[V]}&\multicolumn{1}{|c|}{ U_{1}$ $[V]}&\multicolumn{1}{|c|}{ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
+0.0&0.000&-5.000&5.000\\
+0.5&0.473&-4.527&5.000\\
+1.0&0.982&-4.018&5.000\\
+1.5&1.495&-3.505&5.000\\
+2.0&1.971&-3.029&4.973\\
+2.1&2.082&-2.918&4.950\\
+2.2&2.191&-2.809&4.901\\
+2.3&2.289&-2.711&4.721\\
+2.4&2.376&-2.624&4.166\\
+2.5&2.431&-2.569&2.793\\
+2.6&2.548&-2.452&1.050\\
+2.7&2.674&-2.326&0.563\\
+2.8&2.793&-2.207&0.249\\
+2.9&2.891&-2.109&0.044\\
+3.0&2.975&-2.025&0.023\\
+3.5&3.483&-1.517&0.000\\
+4.0&3.974&-1.026&0.000\\
+4.5&4.431&-0.569&0.000\\
+5.0&4.982&-0.018&0.000\\
+\hline
 		\end{array}
 		\end{equation*}
 	\end{spacing}
 \end{figure}
+
+{\LARGE \colorbox{red}{do tykresu jeszcze wartość napięcia progowego Uth}}  
 
 	%%WYKRES 
 \begin{figure}[H]
@@ -275,7 +310,7 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	y tick label style={/pgf/number format/fixed},
 	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
 	%%
-	legend pos=north west,
+	legend pos=north east,
 	ymajorgrids=true,
 	grid style=dashed,
 	]
@@ -285,8 +320,9 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	mark=*,
 	]
 	coordinates {
-(0.0,5.000)(0.5,5.000)(1.0,5.000)(1.5,5.000)(2.0,4.972)(2.1,4.950)(2.2,4.902)(2.3,4.721)(2.4,4.166)(2.5,2.793)(2.6,1.050)(2.7,0.563)(2.8,0.249)(2.9,0.044)(3.0,0.023)(3.5,0.000)(4.0,0.000)(4.5,0.000)(5.0,0.000)
-		
+(0.000,5.000)(0.473,5.000)(0.982,5.000)(1.495,5.000)(1.971,4.973)(2.082,4.950)(2.191,4.901)(2.289,4.721)(2.376,4.166)(2.431,2.793)(2.548,1.050)(2.674,0.563)(2.793,0.249)(2.891,0.044)(2.975,0.023)(3.483,0.000)(3.974,0.000)(4.431,0.000)(4.982,0.000)
+
+
 	};
 	%%
 	\addplot[
@@ -307,6 +343,13 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 
 \section{Charakterystyka drenowa nMOS}
 
+\subsection*{Cel zadania}
+Analiza zależności między wartością napięcia $D_{DS}$, a wartością prądu $I_{D}$.
+
+
+\subsection*{Przebieg zadania}
+
+Po przygotowaniu poniższego schematu zmierzono napięcie Bramka-Źródło $U_{GS}$ które wyniosło $4.978V$. Następnie wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
 
 %%  rys 1.8.
 \begin{figure}[H]
@@ -331,7 +374,11 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	(6,0) to (7.5,0)
 	to [esource] (7.5,5)
 	to(6,5)
-	(7.5,2.45) node[anchor = mid] {V};
+	(7.5,2.45) node[anchor = mid] {V}
+	(6.5,1.5) to (6.5,4.5)
+	node[currarrow, rotate = 90] {}
+	(6.9,3.2) node[anchor = mid] {$U_{DS}$};
+	
 	\end{circuitikz}
 	\end{equation*}
 	\captionof{figure}{Układ do badania charakterystyki drenowej tranzystora nMOS}
@@ -339,29 +386,37 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 
 %tabelka	
 \begin{figure}[H]
-	\begin{spacing}{1.5}
+	\begin{spacing}{1.3}
 		\begin{equation*}
-		\begin{array}{|r|r|}
+		\begin{array}{|r|r|r|}
 		\hline
-		\multicolumn{1}{|c|}{ $Napięcie$}&\multicolumn{1}{|c|}{I_{D}}\\
-		\multicolumn{1}{|c|}{ $Bramka-$ U_{GS}$ $[V]}&\multicolumn{1}{|c|}{[mA]}\\\hline
-0&0.000\\
-1&1.097\\
-2&2.172\\
-3&3.140\\
-4&4.125\\
-5&5.114\\
-6&5.983\\
-7&6.950\\
-8&8.160\\
-9&9.216\\
-10&10.158\\
+		\multicolumn{1}{|c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{DS}$ $[V]}&
+		\multicolumn{1}{c|}{[mA]}\\
+		\hline
+0&0&0\\
+1&1.179&1.851\\
+2&2.171&3.511\\
+3&3.271&5.018\\
+4&4.138&6.658\\
+5&5.121&7.912\\
+6&6.105&9.551\\
+7&7.201&11.325\\
+8&8.137&12.670\\
+9&9.238&14.342\\
+10&10.154&15.785\\
 \hline
 		\end{array}
 		\end{equation*}
 	\end{spacing}
+\captionof{table}{Tabelea prezentująca wyniki}
 \end{figure}
 
+
+Następnie przygotowano zestaw pomiarowy według poniższego schematu i zmierzono napięcie Bramka-Źródło $U_{DS}$ które wyniosło{\LARGE \colorbox{red}{trzeba ukraść}}$V$. Wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
 
 %%  rys 1.9.
 \begin{figure}[H]
@@ -395,9 +450,104 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 \end{figure}
 
 
+%tabelka	
+\begin{figure}[H]
+	\begin{spacing}{1.3}
+		\begin{equation*}
+		\begin{array}{|r|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{DS}$ $[V]}&
+		\multicolumn{1}{c|}{[mA]}\\
+		\hline
+0&0&0\\
+1&1.132&15.011\\
+2&2.129&31.623\\
+3&3.098&46.258\\
+4&4.095&67.012\\
+5&5.076&92.025\\
+6&6.082&125.895\\
+7&7.023&183.756\\
+8&7.826&322.326\\
+9&8.175&756.497\\
+10&8.567&1465.127\\
+
+		\hline
+		\end{array}
+		\end{equation*}
+	\end{spacing}
+\end{figure}
+
+
+
+%%WYKRES 
+\begin{figure}[H]
+	
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Czasy obliczania etykiet dla grafów},
+	xlabel={Liczba wierzchołków},
+	ylabel={Czas obliczania w misekundach},
+	%
+	scaled x ticks = false,
+	xtick distance = 0.5,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0.15)},anchor=north},
+	%%
+	ytick distance = 100,
+	scaled y ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+		(0,0)(1.179,1.851)(2.171,3.511)(3.271,5.018)(4.138,6.658)(5.121,7.912)(6.105,9.551)(7.201,11.325)(8.137,12.670)(9.238,14.342)(10.154,15.785)
+	};
+	%%
+	\addplot[
+	color=blue,
+	mark=triangle,
+	]
+	coordinates {
+		(0,0)(1.132,15.011)(2.129,31.623)(3.098,46.258)(4.095,67.012)(5.076,92.025)(6.082,125.895)(7.023,183.756)(7.826,322.326)(8.175,756.497)(8.567,1465.127)
+		
+		
+	};
+	\legend{
+		$I_{D} -$ dla $U_{SG} = 4.986V$,
+		$I_{D} -$ dla $U_{SG} = 2.723V$,
+	}
+	%%
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
 
 
 \section{Charakterystyka drenowa pMOS}
+
+\subsection*{Cel zadania}
+Analiza zależności między wartością napięcia $D_{DS}$, a wartością prądu $I_{D}$.
+
+
+\subsection*{Przebieg zadania}
+
+Po przygotowaniu poniższego schematu zmierzono napięcie Bramka-Źródło $U_{GS}$ które wyniosło $-4.986V$. Następnie wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
 
 
 %%  rys 1.10.
@@ -405,6 +555,9 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\begin{equation*}
 	\begin{circuitikz}[american]
 	\draw
+	(-1,2) to (-1,4)
+	node[currarrow, rotate=90] {}
+	(-1.5,2.5) node[anchor = mid] {$U_{SD}$}
 	(0,0) to (3,0)
 	to [esource] (5,0)
 	(4,0) node[anchor = mid] {mA}
@@ -429,19 +582,48 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\captionof{figure}{Układ do badania charakterystyki drenowej tranzystora pMOS}
 \end{figure}
 
+%tabelka	
+\begin{figure}[H]
+	\begin{spacing}{1.3}
+		\begin{equation*}
+		\begin{array}{|r|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{DS}$ $[mV]}&
+		\multicolumn{1}{c|}{[mA]}\\
+		\hline
+0&0&0\\
+1&1.179&1.851\\
+2&2.171&3.511\\
+3&3.271&5.018\\
+4&4.138&6.658\\
+5&5.121&7.912\\
+6&6.105&9.551\\
+7&7.201&11.325\\
+8&8.137&12.670\\
+9&9.238&14.342\\
+10&10.154&15.785\\
+		\hline
+		\end{array}
+		\end{equation*}
+	\end{spacing}
+	\captionof{table}{Tabelea prezentująca wyniki}
+\end{figure}
 
 
-
-\section{Tranzystor nMOS jako przełącznik}
-
-
-
+Następnie złożono poniższy schemat i zbadano napięcie Bramka-Źródło $U_{GS}$ które wyniosło $-2.723V$. Następnie wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
 
 %%  rys 1.11.
 \begin{figure}[H]
 	\begin{equation*}
 	\begin{circuitikz}[american]
 	\draw
+	(-1,2) to (-1,4)
+	node[currarrow, rotate=90] {}
+	(-1.5,2.5) node[anchor = mid] {$U_{SD}$}
 	(0,0) to (5,0)
 	to [esource] (7,0)
 	(6,0) node[anchor = mid] {mA}
@@ -467,6 +649,107 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\end{equation*}
 	\captionof{figure}{Układ do badania charakterystyki drenowej dla obniżonego napięcia bramki pMOS}
 \end{figure}
+
+
+%tabelka	
+\begin{figure}[H]
+	\begin{spacing}{1.3}
+		\begin{equation*}
+		\begin{array}{|r|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{I_{D}}\\
+		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{DS}$ $[V]}&
+		\multicolumn{1}{c|}{[mA]}\\
+		\hline
+		0&0&0\\
+		1&1.132&15.011\\
+		2&2.129&31.623\\
+		3&3.098&46.258\\
+		4&4.095&67.012\\
+		5&5.076&92.025\\
+		6&6.082&125.895\\
+		7&7.023&183.756\\
+		8&7.826&322.326\\
+		9&8.175&756.497\\
+		10&8.567&1465.127\\
+		\hline
+		\end{array}
+		\end{equation*}
+	\end{spacing}
+	\captionof{table}{Tabelea prezentująca wyniki}
+\end{figure}
+
+
+
+%%WYKRES 
+\begin{figure}[H]
+	
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=0.9\textwidth,
+	height = 0.5\textwidth,
+	title={Czasy obliczania etykiet dla grafów},
+	xlabel={Liczba wierzchołków},
+	ylabel={Czas obliczania w misekundach},
+	%
+	scaled x ticks = false,
+	xtick distance = 0.5,
+	x tick label style={/pgf/number format/fixed},
+	xticklabel style = {rotate= 90},
+	x label style={at={(axis description cs:0.5,-0.15)},anchor=north},
+	%%
+	ytick distance = 100,
+	scaled y ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
+	%%
+	legend pos=north west,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	%%
+	\addplot[
+	color=black,
+	mark=*,
+	]
+	coordinates {
+		(0,0)(1.179,1.851)(2.171,3.511)(3.271,5.018)(4.138,6.658)(5.121,7.912)(6.105,9.551)(7.201,11.325)(8.137,12.670)(9.238,14.342)(10.154,15.785)
+	};
+	%%
+	\addplot[
+	color=blue,
+	mark=triangle,
+	]
+	coordinates {
+		(0,0)(1.132,15.011)(2.129,31.623)(3.098,46.258)(4.095,67.012)(5.076,92.025)(6.082,125.895)(7.023,183.756)(7.826,322.326)(8.175,756.497)(8.567,1465.127)
+		
+		
+	};
+	\legend{
+		$I_{D} -$ dla $U_{SG} = 4.986V$,
+		$I_{D} -$ dla $U_{SG} = 2.723V$,
+	}
+	%%
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+\subsection{Wnioski}
+
+{\LARGE \colorbox{red}{jak wartość napięcia bramki wpływa na kształt zarejstrowanych charakterystyk drenowych}}
+
+
+\section{Tranzystor nMOS jako przełącznik}
+
+\subsection{Cel zadania}
+Użycie tranzystora nMOS jako przełącznika
+
+\subsection{Przebieg zadania}
+Przygotowano poniższy układ pomiarowy.
 
 %%  rys 1.14.
 \begin{figure}[H]
@@ -494,6 +777,23 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\end{equation*}
 	\captionof{figure}{Schemat układu do badania tranzystora nMOS w roli przełącznika}
 \end{figure}
+
+Następnie po podłączeniu napięcia zasilającego zwarto palcem zaciski obwodu oznaczone jako $ A-A $ i zaobserwowano przełączenie stanu diody.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{dioda1rozwarte.jpg}
+	\captionof{figure}{Układ pomiarowy przy rozwartych zaciskach $A-A$}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{dioda1zwarte.jpg}
+	\captionof{figure}{Układ pomiarowy przy zwartych zaciskach $A-A$}
+\end{figure}
+
+Następnie rozbudowano układ według poniższego schematu i zaobserwowano działanie układu po zwarciu wyprowadzeń $A-A$.
+
 
 %%  rys 1.15.
 \begin{figure}[H]
@@ -527,7 +827,46 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 
 
 
-%%  rys 1.15.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{1.png}
+	\captionof{figure}{Układ pomiarowy przy zwartych zaciskach $A-A$}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{2.png}
+	\captionof{figure}{Układ pomiarowy, po upływie 1 sekundy od rozwarcia zacisków $A-A$}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{3.png}
+	\captionof{figure}{Układ pomiarowy, po upływie 4 sekund od rozwarcia zacisków $A-A$}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{4.png}
+	\captionof{figure}{Układ pomiarowy, po upływie 5 sekund od rozwarcia zacisków $A-A$}
+\end{figure}
+
+\subsection{Wnioski}
+
+Dioda z drugiego układu po zwarciu zacisków zaczęła świecić, a po ich rozwarciu przez około $ 3.5 $ sekundy świeciła z taką samą intensywnością, następnie powoli przygasała, aby po upływie około $ 4.5 $ sekundy zgasła całkowicie.
+
+{\LARGE \colorbox{red}{Jeszce do czego można użyć czegoś takiego}}
+
+\section{Czas załączania tranzystora}
+
+\subsection{Cel zadania}
+{\LARGE \colorbox{red}{nie wiem, nie znam sie}}
+
+\subsection{Przebieg zadania}
+
+Zbudowano obwód przedstawiony poniżej.
+
+%%  rys 1.17.
 \begin{figure}[H]
 	\begin{equation*}
 	\begin{circuitikz}[american]
@@ -549,19 +888,58 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	\draw [red]
 	(-2,2) to (-2,6)
 	(2,3) to (2,4.5)
-	to (6,4.5);
+	to (6,4.5)
+	(4,4.75)node[anchor = mid] {Czerwony kabel z kanału Y oscyloskopu}
+	(-2.25,5)node[anchor = mid,rotate = 90] {Czerwony kabel z kanału X oscyloskopu};
 	\draw
+	(-0.25,5.5)node[anchor = mid,rotate = 90] {Czarny kabel z kanału X oscyloskopu}
+	(4,6)node[anchor = mid] {Czarny kabel z kanału Y oscyloskopu}
 	(0,6) to (0,3)
 	(0,3) node[ground] {}
 	(6,5.5) to (2,5.5)
 	(2,5.5) node[ground,rotate =270] {};	
 	\end{circuitikz}
 	\end{equation*}
+	\captionof{figure}{Obwód do pomiaru czasu przełączania}
 \end{figure}
 
-\section{Czas załączania tranzystora}
+Wykonano polecenia z pliku pdf przedstawionego przez prowadzącego i zaobserwowano zmiany w wypełnieniu prostokątnego przebiegu sterującego i jego wpływ na intensywność świecenia diody LED.
 
-\section{title}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{male.jpg}
+	\captionof{figure}{Male wypełnienie}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{diodadlamalego.jpg}
+	\captionof{figure}{Duże wypełnienie}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{duze.jpg}
+	\captionof{figure}{Duże wypełnienie}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{diodadladuzego.jpg}
+	\captionof{figure}{Duże wypełnienie}
+\end{figure}
+
+\subsection{Wnioski}
+
+Wraz ze wzrostem wypełnienia prostokątnego przebiegu sterującego intensywność świecenia diody rośnie, a z jego spadkiem maleje.
+
+\subsection{Cel zadania}
+Oszacowanie maksymalnej stabilnej częstotliwości pracy układu tranzystora i diody LED.
+
+\subsection{Przebieg zadania}
+
+{\LARGE \colorbox{red}{no nie działało}}
+
 	\begin{thebibliography}{99}
 		\bibitem{pa}S. Bolkowski,  \emph{Teoria obwodów elektrycznych} , ser. Elektrotechnika teoretyczna. Wydawnictwa NaukowoTechniczne,
 		1986, 

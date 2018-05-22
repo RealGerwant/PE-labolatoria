@@ -2,9 +2,20 @@
 \contentsline {section}{\numberline {1}Charakterystyka bramkowa nMOS}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}Cel zadania}{1}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Przebieg zadania}{1}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Wniosek }{3}{subsection.1.3}
 \contentsline {section}{\numberline {2}Charakterystyka bramkowa pMOS}{3}{section.2}
-\contentsline {section}{\numberline {3}Charakterystyka drenowa nMOS}{4}{section.3}
-\contentsline {section}{\numberline {4}Charakterystyka drenowa pMOS}{6}{section.4}
-\contentsline {section}{\numberline {5}Tranzystor nMOS jako prze\IeC {\l }\IeC {\k a}cznik}{6}{section.5}
-\contentsline {section}{\numberline {6}Czas za\IeC {\l }\IeC {\k a}czania tranzystora}{7}{section.6}
-\contentsline {section}{\numberline {7}title}{7}{section.7}
+\contentsline {subsection}{\numberline {2.1}Cel zadania}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Przebieg zadania}{3}{subsection.2.2}
+\contentsline {section}{\numberline {3}Charakterystyka drenowa nMOS}{5}{section.3}
+\contentsline {section}{\numberline {4}Charakterystyka drenowa pMOS}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Wnioski}{9}{subsection.4.1}
+\contentsline {section}{\numberline {5}Tranzystor nMOS jako prze\IeC {\l }\IeC {\k a}cznik}{9}{section.5}
+\contentsline {subsection}{\numberline {5.1}Cel zadania}{9}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Przebieg zadania}{10}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Wnioski}{13}{subsection.5.3}
+\contentsline {section}{\numberline {6}Czas za\IeC {\l }\IeC {\k a}czania tranzystora}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}Cel zadania}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Przebieg zadania}{14}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Wnioski}{16}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Cel zadania}{16}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Przebieg zadania}{16}{subsection.6.5}
