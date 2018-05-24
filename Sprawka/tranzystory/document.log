@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  22 MAY 2018 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  22 MAY 2018 18:16
 entering extended mode
 **./document.tex
 (document.tex
@@ -1226,95 +1226,86 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
  [1
 
-{C:/Users/Piotr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (15.25452pt too wide) in paragraph at lines 204--206
-\T1/ptm/m/n/10 W roz-pa-try-wa-nym ukªa-dzie, aby tran-zy-stor nMOS za-cz¡ª prz
-e-wo-dzi¢ pr¡d na-pi¦-cie bramki musi [][][][][][] 
- []
+{C:/Users/Piotr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4]
 
-[2] [3] [4]
-Overfull \hbox (0.5321pt too wide) in paragraph at lines 419--420
+Overfull \hbox (0.5321pt too wide) in paragraph at lines 410--411
 []\T1/ptm/m/n/10 Nast¦pnie przy-go-to-wano ze-staw po-mia-rowy we-dªug po-ni»-s
 zego sche-matu i zmie-rzono na-pi¦-cie Bramka-™ródªo
  []
 
-[5] [6] [7] [8]
-Overfull \hbox (177.25323pt too wide) in paragraph at lines 743--744
-[][][][][][] 
- []
-
-[9]
-<dioda1rozwarte.jpg, id=152, 963.6pt x 722.7pt>
+[5] [6] [7] [8] [9]
+<dioda1rozwarte.jpg, id=155, 963.6pt x 722.7pt>
 File: dioda1rozwarte.jpg Graphic file (type jpg)
 <use dioda1rozwarte.jpg>
-Package pdftex.def Info: dioda1rozwarte.jpg  used on input line 785. on input l
-ine 785.
+Package pdftex.def Info: dioda1rozwarte.jpg  used on input line 783. on input l
+ine 783.
 Package pdftex.def Info: Requested size: 385.43317pt x 289.07487pt on input lin
-e 785.
-<dioda1zwarte.jpg, id=153, 963.6pt x 722.7pt>
+e 783.
+ [10]
+<dioda1zwarte.jpg, id=162, 963.6pt x 722.7pt>
 File: dioda1zwarte.jpg Graphic file (type jpg)
 <use dioda1zwarte.jpg>
-Package pdftex.def Info: dioda1zwarte.jpg  used on input line 791. on input lin
-e 791.
+Package pdftex.def Info: dioda1zwarte.jpg  used on input line 789. on input lin
+e 789.
 Package pdftex.def Info: Requested size: 385.43317pt x 289.07487pt on input lin
-e 791.
- [10 <./dioda1rozwarte.jpg>]
-<1.png, id=160, 1284.8pt x 722.7pt>
+e 789.
+ [11 <./dioda1rozwarte.jpg> <./dioda1zwarte.jpg>]
+<1.png, id=169, 1284.8pt x 722.7pt>
 File: 1.png Graphic file (type png)
 <use 1.png>
-Package pdftex.def Info: 1.png  used on input line 832. on input line 832.
+Package pdftex.def Info: 1.png  used on input line 830. on input line 830.
 Package pdftex.def Info: Requested size: 385.44298pt x 216.81166pt on input lin
-e 832.
- [11 <./dioda1zwarte.jpg>]
-<2.png, id=167, 1284.8pt x 722.7pt>
+e 830.
+<2.png, id=170, 1284.8pt x 722.7pt>
 File: 2.png Graphic file (type png)
 <use 2.png>
-Package pdftex.def Info: 2.png  used on input line 838. on input line 838.
+Package pdftex.def Info: 2.png  used on input line 836. on input line 836.
 Package pdftex.def Info: Requested size: 385.44298pt x 216.81166pt on input lin
-e 838.
-<3.png, id=168, 1284.8pt x 722.7pt>
+e 836.
+
+[12 <./1.png (PNG copy)>]
+<3.png, id=177, 1284.8pt x 722.7pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 844. on input line 844.
+Package pdftex.def Info: 3.png  used on input line 842. on input line 842.
 Package pdftex.def Info: Requested size: 385.44298pt x 216.81166pt on input lin
-e 844.
- [12 <./1.png (PNG copy)> <./2.png (PNG copy)>]
-<4.png, id=175, 1284.8pt x 722.7pt>
+e 842.
+<4.png, id=178, 1284.8pt x 722.7pt>
 File: 4.png Graphic file (type png)
 <use 4.png>
-Package pdftex.def Info: 4.png  used on input line 850. on input line 850.
+Package pdftex.def Info: 4.png  used on input line 848. on input line 848.
 Package pdftex.def Info: Requested size: 385.44298pt x 216.81166pt on input lin
-e 850.
- [13 <./3.png (PNG copy)> <./4.png (PNG copy)>]
-<male.jpg, id=183, 963.6pt x 722.7pt>
+e 848.
+ [13 <./2.png (PNG copy)> <./3.png (PNG copy)>]
+[14 <./4.png (PNG copy)>]
+<male.jpg, id=191, 963.6pt x 722.7pt>
 File: male.jpg Graphic file (type jpg)
 <use male.jpg>
-Package pdftex.def Info: male.jpg  used on input line 910. on input line 910.
+Package pdftex.def Info: male.jpg  used on input line 905. on input line 905.
 Package pdftex.def Info: Requested size: 289.08223pt x 216.81166pt on input lin
-e 910.
-<diodadlamalego.jpg, id=184, 963.6pt x 722.7pt>
+e 905.
+<diodadlamalego.jpg, id=192, 963.6pt x 722.7pt>
 File: diodadlamalego.jpg Graphic file (type jpg)
 <use diodadlamalego.jpg>
-Package pdftex.def Info: diodadlamalego.jpg  used on input line 916. on input l
-ine 916.
+Package pdftex.def Info: diodadlamalego.jpg  used on input line 911. on input l
+ine 911.
 Package pdftex.def Info: Requested size: 289.08223pt x 216.81166pt on input lin
-e 916.
-
-[14 <./male.jpg>]
-<duze.jpg, id=191, 963.6pt x 722.7pt>
+e 911.
+ [15 <./male.jpg>]
+<duze.jpg, id=199, 963.6pt x 722.7pt>
 File: duze.jpg Graphic file (type jpg)
 <use duze.jpg>
-Package pdftex.def Info: duze.jpg  used on input line 922. on input line 922.
+Package pdftex.def Info: duze.jpg  used on input line 917. on input line 917.
 Package pdftex.def Info: Requested size: 289.08223pt x 216.81166pt on input lin
-e 922.
-<diodadladuzego.jpg, id=192, 963.6pt x 722.7pt>
+e 917.
+<diodadladuzego.jpg, id=200, 963.6pt x 722.7pt>
 File: diodadladuzego.jpg Graphic file (type jpg)
 <use diodadladuzego.jpg>
-Package pdftex.def Info: diodadladuzego.jpg  used on input line 928. on input l
-ine 928.
+Package pdftex.def Info: diodadladuzego.jpg  used on input line 923. on input l
+ine 923.
 Package pdftex.def Info: Requested size: 289.08223pt x 216.81166pt on input lin
-e 928.
- [15 <./diodadlamalego.jpg> <./duze.jpg>] [16 <./diodadladuzego.jpg>] (document
+e 923.
+ [16 <./diodadlamalego.jpg> <./duze.jpg>] [17 <./diodadladuzego.jpg>] (document
 .toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
@@ -1322,21 +1313,21 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 \tf@toc=\write5
 \openout5 = `document.toc'.
 
- [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 954.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 954.
+ [18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 960.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 960.
  (document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 954.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 954.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 960.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 960.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: ACE8CE7C2B99FB5E2CCD439D9651DC21;1270.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 954.
+(rerunfilecheck)             Checksum: CC86A13A10D51544440DE644BDABB4FC;1328.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 960.
  ) 
 Here is how much of TeX's memory you used:
- 36848 strings out of 493312
- 915623 string characters out of 3138898
- 1161496 words of memory out of 3000000
- 39783 multiletter control sequences out of 15000+200000
+ 36877 strings out of 493312
+ 916078 string characters out of 3138898
+ 1170082 words of memory out of 3000000
+ 39808 multiletter control sequences out of 15000+200000
  44148 words of font info for 64 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,19n,96p,730b,2269s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1348,9 +1339,9 @@ helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/symbol/usyr.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on document.pdf (17 pages, 6054180 bytes).
+Output written on document.pdf (18 pages, 6057638 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
- 223 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 293 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

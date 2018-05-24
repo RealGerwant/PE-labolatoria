@@ -7,15 +7,16 @@
 \contentsline {subsection}{\numberline {2.1}Cel zadania}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Przebieg zadania}{3}{subsection.2.2}
 \contentsline {section}{\numberline {3}Charakterystyka drenowa nMOS}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Wnioski}{7}{subsection.3.1}
 \contentsline {section}{\numberline {4}Charakterystyka drenowa pMOS}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Wnioski}{9}{subsection.4.1}
-\contentsline {section}{\numberline {5}Tranzystor nMOS jako prze\IeC {\l }\IeC {\k a}cznik}{9}{section.5}
-\contentsline {subsection}{\numberline {5.1}Cel zadania}{9}{subsection.5.1}
+\contentsline {subsection}{\numberline {4.1}Wnioski}{10}{subsection.4.1}
+\contentsline {section}{\numberline {5}Tranzystor nMOS jako prze\IeC {\l }\IeC {\k a}cznik}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Cel zadania}{10}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Przebieg zadania}{10}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Wnioski}{13}{subsection.5.3}
-\contentsline {section}{\numberline {6}Czas za\IeC {\l }\IeC {\k a}czania tranzystora}{13}{section.6}
-\contentsline {subsection}{\numberline {6.1}Cel zadania}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {5.3}Wnioski}{14}{subsection.5.3}
+\contentsline {section}{\numberline {6}Czas za\IeC {\l }\IeC {\k a}czania tranzystora}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Cel zadania}{14}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Przebieg zadania}{14}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Wnioski}{16}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Cel zadania}{16}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Przebieg zadania}{16}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.3}Wnioski}{17}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Cel zadania}{17}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Przebieg zadania}{17}{subsection.6.5}

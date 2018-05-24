@@ -143,10 +143,6 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 \captionof{table}{Tabela przedstawiająca wyniki pomiarów}
 	\end{figure}
 
-
-{\LARGE \colorbox{red}{do tykresu jeszcze wartość napięcia progowego Uth}}
-
-
 	%%WYKRES 
 \begin{figure}[H]
 	
@@ -184,15 +180,14 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 	};
 	%%
 	\addplot[
-	color=blue,
-	mark=triangle,
+	color=red,
 	]
 	coordinates {
-		(0,0)
-		
+		(2,-0.5)(2,5.5)
 	};
 	\legend{
 		$I_{D} -pomiary$,
+		$U_{th}$
 	}
 	%%
 	\end{axis}
@@ -201,9 +196,7 @@ Przy pomocy poniższego układu dokonano serii pomiarów wartości prądu drenu 
 
 
 \subsection{Wniosek }
-W rozpatrywanym układzie, aby tranzystor nMOS zaczął przewodzić prąd napięcie bramki musi
-{\LARGE \colorbox{red}{tutaj 1.5.1.5}}
-
+Przy niskim napięciu $U_{GS}$ wartość $I_{D}$ przyjmuje $0mA$ wraz z wzrostem napięcia $U_{GS}$ wartość $I_{D}$ początkowo dalej utrzymuje się na poziomie zerowym, aby przed osiągnięciem napięcia $U_{th}$ zacząć lawinowo wzrastać by po jego przekroczeniu ustabilizować się na poziomie około $5mA$. 
 \section{Charakterystyka bramkowa pMOS}
 \subsection{Cel zadania}
 Wykazanie dualizmu między działaniem tranzystora pMOS względem nMOS.
@@ -285,8 +278,6 @@ Na podstawie uzyskanych wyników obliczono wartości napięć bramka-źródło d
 	\end{spacing}
 \end{figure}
 
-{\LARGE \colorbox{red}{do tykresu jeszcze wartość napięcia progowego Uth}}  
-
 	%%WYKRES 
 \begin{figure}[H]
 	
@@ -326,15 +317,15 @@ Na podstawie uzyskanych wyników obliczono wartości napięć bramka-źródło d
 	};
 	%%
 	\addplot[
-	color=blue,
-	mark=triangle,
+	color=red,
 	]
 	coordinates {
-		(0,0)
+		(2.4,-0.5)(2.4,5.5)
 		
 	};
 	\legend{
 		$I_{D} -pomiary$,
+		$U_{th}$,
 	}
 	%%
 	\end{axis}
@@ -416,7 +407,7 @@ Po przygotowaniu poniższego schematu zmierzono napięcie Bramka-Źródło $U_{G
 \end{figure}
 
 
-Następnie przygotowano zestaw pomiarowy według poniższego schematu i zmierzono napięcie Bramka-Źródło $U_{DS}$ które wyniosło{\LARGE \colorbox{red}{trzeba ukraść}}$V$. Wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
+Następnie przygotowano zestaw pomiarowy według poniższego schematu i zmierzono napięcie Bramka-Źródło $U_{DS}$ które wyniosło $2.732V$. Wykonano serię pomiarów wartości prądu drenu $I_{D}$ w zależności od napięcia Dren-Źródło $U_{DS}$. Dla napięcia zasilania zmienianego w zakresie $ <0..10>V $.
 
 %%  rys 1.9.
 \begin{figure}[H]
@@ -537,7 +528,10 @@ Następnie przygotowano zestaw pomiarowy według poniższego schematu i zmierzon
 	\end{tikzpicture}
 \end{figure}
 
+\subsection{Wnioski}
 
+Wraz z wzrostem napięcia $U_{DS}$ wzrasta wartość $I_{D}$
+Dla obniżonego napięcia Bramka-Źródło wartość prądu drenu wzrasta szybciej.  
 
 \section{Charakterystyka drenowa pMOS}
 
@@ -582,35 +576,38 @@ Po przygotowaniu poniższego schematu zmierzono napięcie Bramka-Źródło $U_{G
 	\captionof{figure}{Układ do badania charakterystyki drenowej tranzystora pMOS}
 \end{figure}
 
+
 %tabelka	
 \begin{figure}[H]
 	\begin{spacing}{1.3}
 		\begin{equation*}
-		\begin{array}{|r|r|r|}
+		\begin{array}{|r|r|r|r|}
 		\hline
 		\multicolumn{1}{|c|}{ $Napięcie$}&
 		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
 		\multicolumn{1}{c|}{I_{D}}\\
 		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{GS}$ $[V]}&
 		\multicolumn{1}{c|}{ U_{DS}$ $[mV]}&
 		\multicolumn{1}{c|}{[mA]}\\
 		\hline
-0&0&0\\
-1&1.179&1.851\\
-2&2.171&3.511\\
-3&3.271&5.018\\
-4&4.138&6.658\\
-5&5.121&7.912\\
-6&6.105&9.551\\
-7&7.201&11.325\\
-8&8.137&12.670\\
-9&9.238&14.342\\
-10&10.154&15.785\\
+0&4.87&0&0\\
+1.139&3.689&-1138&0\\
+2.198&2.685&-2239&0\\
+3.127&1.759&-3147&0\\
+4.191&0.721&-4155&0\\
+5.211&-0.273&-5263&0\\
+6.173&-1.246&-6162&0\\
+7.124&-2.201&-7165&0\\
+8.072&-3.148&-209.489&8.016\\
+9.135&-4.218&-258.754&9.025\\
+10.192&-5.286&-204.156&10.208\\
 		\hline
 		\end{array}
 		\end{equation*}
 	\end{spacing}
-	\captionof{table}{Tabelea prezentująca wyniki}
+	\captionof{table}{Tabela prezentująca wyniki}
 \end{figure}
 
 
@@ -655,26 +652,28 @@ Następnie złożono poniższy schemat i zbadano napięcie Bramka-Źródło $U_{
 \begin{figure}[H]
 	\begin{spacing}{1.3}
 		\begin{equation*}
-		\begin{array}{|r|r|r|}
+		\begin{array}{|r|r|r|r|}
 		\hline
 		\multicolumn{1}{|c|}{ $Napięcie$}&
 		\multicolumn{1}{c|}{ $Napięcie$}&
+		\multicolumn{1}{c|}{ $Napięcie$}&
 		\multicolumn{1}{c|}{I_{D}}\\
 		\multicolumn{1}{|c|}{ U_{IN}$ $[V]}&
-		\multicolumn{1}{c|}{ U_{DS}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{GS}$ $[V]}&
+		\multicolumn{1}{c|}{ U_{DS}$ $[mV]}&
 		\multicolumn{1}{c|}{[mA]}\\
 		\hline
-		0&0&0\\
-		1&1.132&15.011\\
-		2&2.129&31.623\\
-		3&3.098&46.258\\
-		4&4.095&67.012\\
-		5&5.076&92.025\\
-		6&6.082&125.895\\
-		7&7.023&183.756\\
-		8&7.826&322.326\\
-		9&8.175&756.497\\
-		10&8.567&1465.127\\
+0&2.456&0&0\\
+1.315&1.126&-1289&0\\
+2.115&0.326&-2145&0\\
+3.198&-0.756&-3214&0\\
+4.167&-1.715&-4128&0\\
+5.081&-2.631&-263&4.826\\
+6.112&-3.654&-52&6.195\\
+7.097&-4.634&-45&7.182\\
+8.012&-5.539&-40&8.098\\
+9.008&-6.546&-38&9.136\\
+10.021&-7.498&-34&10.185\\
 		\hline
 		\end{array}
 		\end{equation*}
@@ -697,12 +696,12 @@ Następnie złożono poniższy schemat i zbadano napięcie Bramka-Źródło $U_{
 	ylabel={Czas obliczania w misekundach},
 	%
 	scaled x ticks = false,
-	xtick distance = 0.5,
+	xtick distance = 250,
 	x tick label style={/pgf/number format/fixed},
 	xticklabel style = {rotate= 90},
 	x label style={at={(axis description cs:0.5,-0.15)},anchor=north},
 	%%
-	ytick distance = 100,
+	ytick distance = 1,
 	scaled y ticks = false,
 	y tick label style={/pgf/number format/fixed},
 	y label style={at={(axis description cs:-0.05,0.85)},anchor=east},
@@ -717,7 +716,7 @@ Następnie złożono poniższy schemat i zbadano napięcie Bramka-Źródło $U_{
 	mark=*,
 	]
 	coordinates {
-		(0,0)(1.179,1.851)(2.171,3.511)(3.271,5.018)(4.138,6.658)(5.121,7.912)(6.105,9.551)(7.201,11.325)(8.137,12.670)(9.238,14.342)(10.154,15.785)
+(-7165,0)(-6162,0)(-5263,0)(-4155,0)(-3147,0)(-2239,0)(-1138,0)(-209.489,8.016)(-258.754,9.025)(-204.156,10.208)
 	};
 	%%
 	\addplot[
@@ -725,23 +724,22 @@ Następnie złożono poniższy schemat i zbadano napięcie Bramka-Źródło $U_{
 	mark=triangle,
 	]
 	coordinates {
-		(0,0)(1.132,15.011)(2.129,31.623)(3.098,46.258)(4.095,67.012)(5.076,92.025)(6.082,125.895)(7.023,183.756)(7.826,322.326)(8.175,756.497)(8.567,1465.127)
-		
-		
+(-2145,0)(-3214,0)(-4128,0)(-1289,0)(-263,4.826)(-52,6.195)(-45,7.182)(-40,8.098)(-38,9.136)(-34,10.185)	
 	};
 	\legend{
-		$I_{D} -$ dla $U_{SG} = 4.986V$,
-		$I_{D} -$ dla $U_{SG} = 2.723V$,
+		pierwszy obwód,
+		drugi obwód,
 	}
 	%%
 	\end{axis}
 	\end{tikzpicture}
 \end{figure}
 
+
+
 \subsection{Wnioski}
 
-{\LARGE \colorbox{red}{jak wartość napięcia bramki wpływa na kształt zarejstrowanych charakterystyk drenowych}}
-
+Dla wartości napięcia bramki bliższych wartości 0 wartość prądu $I_{D}$ osiąga wartości różne od zera. Wraz ze spadkiem napięcia bramki spada wartość prądu $I_{D}$, aby w pewnym momencie osiągnąć wartość 0 i dalej utrzymywać się na tej wartości.
 
 \section{Tranzystor nMOS jako przełącznik}
 
@@ -853,15 +851,12 @@ Następnie rozbudowano układ według poniższego schematu i zaobserwowano dzia�
 
 \subsection{Wnioski}
 
-Dioda z drugiego układu po zwarciu zacisków zaczęła świecić, a po ich rozwarciu przez około $ 3.5 $ sekundy świeciła z taką samą intensywnością, następnie powoli przygasała, aby po upływie około $ 4.5 $ sekundy zgasła całkowicie.
-
-{\LARGE \colorbox{red}{Jeszce do czego można użyć czegoś takiego}}
+Dioda z drugiego układu po zwarciu zacisków zaczęła świecić, a po ich rozwarciu przez około $ 3.5 $ sekundy świeciła z taką samą intensywnością, następnie powoli przygasała, aby po upływie około $ 4.5 $ sekundy zgasła całkowicie. Aplikacją praktyczną takiego urządzenia może być na przykład użycie go w czytniku kart dostępu, po przyłożeniu i odczytaniu karty zapali się dioda LED o odpowiednim kolorze, a po upływie pewnego czasu zgaśnie. 
 
 \section{Czas załączania tranzystora}
 
 \subsection{Cel zadania}
-{\LARGE \colorbox{red}{nie wiem, nie znam sie}}
-
+Badanie wpływu prostokątnego przebiegu sterującego na działanie diody.
 \subsection{Przebieg zadania}
 
 Zbudowano obwód przedstawiony poniżej.
@@ -938,16 +933,27 @@ Oszacowanie maksymalnej stabilnej częstotliwości pracy układu tranzystora i d
 
 \subsection{Przebieg zadania}
 
-{\LARGE \colorbox{red}{no nie działało}}
+Po podniesieniu częstotliwości pobudzenia ponad 1MHz, oscyloskop nie wskazał przewidywanych wyników, a prowadzący uznał, że to wina generatora. Po przeniesieniu się na inne stanowisko i użyciu innego generatora oscyloskop dalej nie wskazywał przewidywanych wartości, prowadzący potwierdził poprawne złożenie układu i użycia oscyloskopu.
+
+
+Jeśli udałoby się uzyskać prawidłowe wyniki, określono dla jakiej częstotliwości zostały utworzone i zapisano szacowany czas przełączenia $t_{d}$, a następnie przy pomocy wzoru $f_{max} = \dfrac{1}{t_{d}}$ obliczono maksymalną stabilną częstotliwość pracy układu tranzystora i diody LED.
 
 	\begin{thebibliography}{99}
-		\bibitem{pa}S. Bolkowski,  \emph{Teoria obwodów elektrycznych} , ser. Elektrotechnika teoretyczna. Wydawnictwa NaukowoTechniczne,
-		1986, 
-		\bibitem{pa1}P. Horowitz and W. Hill, \emph{Sztuka elektroniki}. WKiŁ, 2003, vol. 1.
-		\bibitem{pa2}D. Halliday, R. Resnick, and J. Walker, \emph{Podstawy fizyki.} PWN, 2003, vol. 3.
-		\bibitem{pa4}J. Watson,\emph{ Elektronika.} WKiŁ, 1999.
-		\bibitem{pa5}Z. Nosal and J. Baranowski, \emph{Układy elektroniczne.} WNT, 2003.
+		\bibitem{pa}Encyclopaedia Britannica http://www.britannica.com/, 
+		
+		\bibitem{pa1}BS170/MMBF170 \emph{0 N-Channel Enhancement Mode Field Effect Transistor, National Semiconductor}. 1992r.
+		
+		\bibitem{pa2}TP0610L/T, VP0610L/T \emph{BS250 P-Channel 60-V (D-S) MOSFET, Vishay Siliconix.} 2001r.
+
+		\bibitem{pa4} ADI \emph{, Sztuka elektroniki, tomy 1. i 2, } WKiŁ, Warszawa 2003r.
+		
+		\bibitem{pa5}] ] Resnick R., Halliday D., Walker J.,  \emph{Podstawy fizyki, tom 3.,} PWN, Warszawa 2003r.
+		
+		\bibitem{pa6}] Watson J. \emph{ Elektronika,} WKiŁ, Warszawa 1999r.
+		
+		\bibitem{pa7}Nosal Z., Baranowski J. \emph{Układy elektroniczne,} Warszawa 2003r.
 	\end{thebibliography}
+		
 	\newpage
 	\tableofcontents
 		
