@@ -113,6 +113,23 @@ Badanie wzmacniacza operacyjnego w konfiguracji nieodwracającej.
 
 \subsection{Przebieg zadania}
 
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}
+	\draw
+	(0,0) node[op amp] (pap) {}
+	(pap.out) to [short,-o] (2,0)
+	(-2,-0.5) to [short, o-] (pap.+)
+	(-3,0.5) to [european resistor, l=$Z_{in}$] 
+	(pap.-) to (-1.2,2)
+	to [european resistor, l = $Z_{f}$] (1.2,2)
+	to (pap.out)
+	(-3,0.4) to (-3,0.6);
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Konfiguracja nieodwracająca}
+\end{figure}
+
 Przygotowano układ zgodnie z instrukcjami i odczytano wartości elementów rezystancyjnych $R_{1} = 1k\Omega$ ( wartość z pomiarów $987.573\Omega$ ), $R_{2} = 1k\Omega$ ( wartość z pomiarów $992.386\Omega$)  odpowiedzialnych za wyznaczenie stopnia wzmocnienia w tej konfiguracji.
 
 Za pomocą oscyloskopu odczytano amplitudy przebiegów wejściowego $500mV$ i wyjściowego $1V$, a następnie zapisano ich oscylogram
@@ -123,8 +140,18 @@ Za pomocą oscyloskopu odczytano amplitudy przebiegów wejściowego $500mV$ i wy
 	\captionof{figure}{Zapisany oscylogram wybranej pary przebiegów.}
 \end{figure}
 
+Wzmocnienie oszacowano na $2$ w skali linowej i $10 \log_{10} 2 \approx 3.0103 dB$
+
+Za pomocą zależności $\dfrac{U_{out}(s)}{U_{in}(s)} = 1 + \dfrac{Z_{f}}{Z_{in}} = 2 $  porównano wartość wzmocnienia z zależnością.
+
+Na podstawie ogólnego równania opisującego wzmocnienie stopnia w konfiguracji nieodwracającej, $\dfrac{U_{out}(s)}{U_{in}(s)} = 1 + \dfrac{Z_{f}}{Z_{in}}$, określono że wzmocnienie dla układu wtórnika napięciowego jest równe $1$. 
+
+Wtórnik napięcia prawie wcale nie pobiera prądu ze źródła sygnału, a umożliwia pobranie całkiem sporego prądu ze swojego wyjścia, przez co układy te są stosowane w celu odseparowania źródła sygnału od odbiornika.
+
 
 \subsection{Wnioski}
+
+Po przeanalizowaniu oszacowanych wartości z teoretycznymi stwierdzono, ze doświadczenie przeprowadzono poprawnie.
 
 \section{Konfiguracja odwracająca} %1.4.1
 
@@ -134,39 +161,59 @@ Badanie wzmacniacza operacyjnego w konfiguracji odwracającej
 
 \subsection{Przebieg zadania}
 
+
+\begin{figure}[H]
+	\begin{equation*}
+	\begin{circuitikz}
+	\draw
+	(0,0) node[op amp] (pap) {}
+	(pap.out) to [short,-o] (2,0)
+	(-2,-0.5) to (pap.+)
+	(-3,0.5) to [short, o-, european resistor, l=$Z_{in}$] 
+	(pap.-) to (-1.2,2)
+	to [european resistor, l = $Z_{f}$] (1.2,2)
+	to (pap.out)
+	(-2,-0.4) to (-2,-0.6);
+	\end{circuitikz}
+	\end{equation*}
+	\captionof{figure}{Konfiguracja odwracająca}
+\end{figure}
+
 Przygotowano układ zgodnie z instrukcjami i odczytano wartości elementów rezystancyjnych i pojemnościowych możliwych do załączenia w roli impedancji $Z_{f}$ oraz $Z_{in}$ w tej konfiguracji.
 
 \begin{spacing}{1.5}
 	\begin{equation*}
-	\begin{array}{|l|c|l|l|}
+	\begin{array}{|l|c|l|}
 	\hline
-	\multicolumn{1}{|c|}{$nazwa$}&\multicolumn{1}{|c|}{Z_{in}/}&\multicolumn{2}{|c|}{$wartości$}\\\cline{3-4}
-	\multicolumn{1}{|c|}{$elementu$}&\multicolumn{1}{|c|}{Z_{f}}&\multicolumn{1}{|c|}{$odczytów$}&\multicolumn{1}{|c|}{$pomiarów$}\\
+	\multicolumn{1}{|c|}{$nazwa$}&\multicolumn{1}{|c|}{Z_{in}/}&\multicolumn{1}{|c|}{$wartości$}\\
+	\multicolumn{1}{|c|}{$elementu$}&\multicolumn{1}{|c|}{Z_{f}}&\multicolumn{1}{|c|}{$odczytów$}\\
 	\hline
-	R3&\multirow{4}{*}{$Z_{in}$}&-&-\\
-	C1&&-&-\\
-	R4&&-&-\\
-	R5&&-&-\\\hline
-	C2&\multirow{4}{*}{$Z_{f}$}&-&-\\
-	R6&&-&-\\
-	R7&&-&-\\
-	R8&&-&-\\\hline
+	R3&\multirow{4}{*}{$Z_{in}$}&1k\Omega\\
+	C1&&100nF\\
+	R4&&2k\Omega\\
+	R5&&1k\Omega\\\hline
+	C2&\multirow{4}{*}{$Z_{f}$}&10nf\\
+	R6&&5k\Omega\\
+	R7&&1k\Omega\\
+	R8&&2k\Omega\\\hline
 	\end{array}
 	\end{equation*}
 		\captionof{table}{Zestawienie dokonanych pomiarów i odczytów.}
 \end{spacing}
 
-\begin{spacing}{1.5}
+Przy pomocy oscyloskopu odczytano wartości $u_{we}$ i $w_{wy}$, następnie obliczono $k_{u}$ przy pomocy wzoru $\dfrac{U_{out}(s)}{U_{in}(s)} = - \dfrac{Z_{f}}{Z_{in}}$, dla rożnych ustawień wzmacniacza.
+
+\begin{spacing}{1.8}
 	\begin{equation*}
 	\begin{array}{|l|l|l|l||l|l|l|l|l|}
 	\hline
 	\multicolumn{1}{|c|}{Z_{in}}&\multicolumn{1}{c|}{$nr przełącznika$}&\multicolumn{1}{c|}{Z_{f}}&\multicolumn{1}{c||}{$nr przełącznika$}&
 	\multicolumn{1}{|c|}{k_{u} $ teoretyczne$}&\multicolumn{1}{c|}{u_{we}}&\multicolumn{1}{c|}{u_{wy}}&\multicolumn{1}{c|}{k_{u}$ $ [V/V]}&\multicolumn{1}{c|}{k_{u} $ $ [dB]}\\
 	\hline
-	1k\Omega&1&2k\Omega&1&-&-&-&-&-\\
-	1k\Omega&1&1k\Omega&2&-&-&-&-&-\\
-	1k\Omega&1&5k\Omega&3&-&-&-&-&-\\
-	2k\Omega&2&1k\Omega&2&-&-&-&-&-\\
+	1k\Omega&1&2k\Omega&1&-2&1.06V&-2.12V&-2&-3.01\\
+	1k\Omega&1&1k\Omega&2&-1&1.06V&-1.06V&-1&0\\
+	1k\Omega&1&5k\Omega&3&-5&1.06V&-5.44V&-5.13&-7.10\\
+	2k\Omega&2&1k\Omega&2&-0.5&1.06V&-0.54V&-0.5&3.01\\
 	\hline
 	\end{array}
 	\end{equation*}
@@ -183,7 +230,13 @@ Zapisano oscylogram wybranej pary przebiegów, dla $Z_{in}$ numer przełącznika
 	\captionof{figure}{Zapisany oscylogram dla wybranej pary przebiegów.}
 \end{figure}
 
+Różnice między teoretyczną a uzyskaną wartością pomiarów wzmocnienia $k_{u}$, wynikają z niedokładnością sprzętu pomiarowego i elementów układu.
+
+Przesunięcie fazowe między przebiegami wynosi $\Pi$ i jest spowodowane różnicą napięć
+
 \subsection{Wnioski}
+
+Po przeanalizowaniu oszacowanych wartości z teoretycznymi stwierdzono, ze doświadczenie przeprowadzono poprawnie.
 
 \section{Blok integratora} %1.5.1
 
@@ -195,6 +248,7 @@ Badanie układu całkującego.
 
 Przygotowano układ zgodnie z instrukcjami i za pomocą oscyloskopu odczytano współczynniki nachylenia przebiegu trójkątnego.
 
+Korzystając z zależności $\quad u_{out}(t) = - \dfrac{1}{RC} \int u_{in}(t)dt = - \dfrac{1}{T_{i}} \int u_{in}(t)dt$ wyprowadzono wzór $\dfrac{1}{T_{i}} = \dfrac{1}{RC}$ do obliczenia teoretycznego $ \dfrac{1}{T_{i}}$
 \begin{spacing}{2}
 \begin{equation*}
 \begin{array}{|r|r|r|r||r|r|}
@@ -248,6 +302,9 @@ Następnie zmieniono ustawienia przełączników na $3$ dla INPUT i $1,4$ dla LO
 \end{figure}
 
 
+{\centering
+\colorbox{red}{dlaczemu?}}
+
 \subsection{Wnioski}
 
 
@@ -258,9 +315,9 @@ Następnie zmieniono ustawienia przełączników na $3$ dla INPUT i $1,4$ dla LO
 
 		\bibitem{pa4} Stanisław Bolkowski,  \emph{Elektrotechnika,} WSiP, 2005r.
 		
-		\bibitem{pa4} Krakowski Maciej,  \emph{Elektrotechnika teoretyczna,} Wydawnictwo Naukowe PWN, 1995r.
+		\bibitem{pa5} Krakowski Maciej,  \emph{Elektrotechnika teoretyczna,} Wydawnictwo Naukowe PWN, 1995r.
 		
-		\bibitem{pa4} R. Kurdziel,  \emph{Podstawy elektrotechniki,} Wydawnictwo Naukowe WSiP, 1999r.
+		\bibitem{pa6} R. Kurdziel,  \emph{Podstawy elektrotechniki,} Wydawnictwo Naukowe WSiP, 1999r.
 
 	\end{thebibliography}
 		
